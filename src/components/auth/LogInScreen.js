@@ -65,7 +65,7 @@ export const LogInScreen = () => {
 
     if (isLoggedIn) {
         return (
-            <Container sx={{ marginTop: '40px' }}>
+            <Container sx={{ marginTop: 12 }}>
                 <Grid container spacing={2}>
                     <Grid item md={3} xs={12}></Grid>
                     <Grid item md={6} xs={12}>
@@ -81,7 +81,7 @@ export const LogInScreen = () => {
         );
     } else if (isError) {
         return (
-            <Container sx={{ marginTop: '40px' }}>
+            <Container sx={{ marginTop: 12 }}>
                 <Grid container spacing={2}>
                     <Grid item md={3} xs={12}></Grid>
                     <Grid item md={6} xs={12}>
@@ -100,7 +100,7 @@ export const LogInScreen = () => {
         );
     } else {
         return (
-            <Container sx={{ marginTop: '40px' }}>
+            <Container sx={{ marginTop: 12 }}>
                 <Grid container spacing={2}>
                     <Grid item md={3} xs={12}></Grid>
                     <Grid item md={6} xs={12}>

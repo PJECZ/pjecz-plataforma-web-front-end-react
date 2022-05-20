@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { Materias } from '../../actions/MateriasActions';
 
 
 export const MateriasScreen = () => {
+
+    let navigate = useNavigate();
+    const data = JSON.parse(window.localStorage.getItem('data'));
+
+    useEffect(() => {
+        if (!data) {
+            navigate('/');
+        }
+    }, [data]);
 
     const [datos, setDatos] = useState([]);
     const [consultado, setConsultado] = useState(false);
