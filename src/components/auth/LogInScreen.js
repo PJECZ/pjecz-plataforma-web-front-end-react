@@ -11,7 +11,7 @@ const cleanFormData = {
 }
 
 
-export const LoginScreen = () => {
+export const LogInScreen = () => {
 
     let navigate = useNavigate();
 
@@ -43,9 +43,10 @@ export const LoginScreen = () => {
         params.append('password', formData.password);
         axios.post('/token', params, headers).then( result => {
             if (result.status === 200) {
-                // Exito, redirigir
-                navigate('/distritos');
-                window.localStorage.setItem('token', result.data.access_token);
+                // Exito
+                const { data } = result;
+                navigate('/catalogos/distritos');
+                window.localStorage.setItem('data', JSON.stringify(data));
                 setIsLoggedIn(true);
             } else {
                 // ERROR fatal en inicio de sesion

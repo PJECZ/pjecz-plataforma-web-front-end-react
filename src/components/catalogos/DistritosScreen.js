@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
-import { Materias } from '../../actions/MateriasActions';
+import { Distritos } from '../../actions/DistritosActions';
 
 
-export const MateriasScreen = () => {
+export const DistritosScreen = () => {
 
     const [datos, setDatos] = useState([]);
     const [consultado, setConsultado] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
-            const response = await Materias();
+            const response = await Distritos();
             if (response.status === 200) {
                 setDatos(response.data.items);
                 setConsultado(true);
@@ -22,7 +22,7 @@ export const MateriasScreen = () => {
     if (consultado) {
         return (
             <Container sx={{ marginTop: 12 }}>
-                <Typography variant='h3' sx={{ marginBottom: 2 }}>Materias</Typography>
+                <Typography variant='h3' sx={{ marginBottom: 2 }}>Distritos</Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
@@ -42,7 +42,7 @@ export const MateriasScreen = () => {
         );
     } else {
         return (
-            <Container>
+            <Container sx={{ marginTop: 12 }}>
                 <Typography variant='h3'>Cargando...</Typography>
             </Container>
         );
