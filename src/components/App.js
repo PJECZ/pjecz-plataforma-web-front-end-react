@@ -4,6 +4,7 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import { InstitutionalTheme } from '../theme/InstitutionalTheme';
 
+import { LoginScreen } from './auth/LoginScreen';
 import { DistritosScreen } from './catalogos/DistritosScreen';
 import { MateriasScreen } from './catalogos/MateriasScreen';
 
@@ -24,8 +25,10 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<Layout />}>
                     <Route index element={<LoginScreen />} />
-                    <Route path='/distritos' element={<DistritosScreen />} />
-                    <Route path='/materias' element={<MateriasScreen />} />
+                    <Route path='catalogos'>
+                        <Route path='distritos' element={<DistritosScreen />} />
+                        <Route path='materias' element={<MateriasScreen />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>

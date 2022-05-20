@@ -44,7 +44,7 @@ export const LoginScreen = () => {
         axios.post('/token', params, headers).then( result => {
             if (result.status === 200) {
                 // Exito, redirigir
-                navigate('/list');
+                navigate('/distritos');
                 window.localStorage.setItem('token', result.data.access_token);
                 setIsLoggedIn(true);
             } else {
