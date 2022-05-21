@@ -107,7 +107,7 @@ export const LogInScreen = () => {
                     <Grid item md={6} xs={12}>
                         <Card align='center' sx={{ padding: 4 }}>
                             <Typography variant='h5' sx={commonSX.title}>
-                                Ingresar al Sistema de Citas
+                                Plataforma Web V3.0
                             </Typography>
                             <form onSubmit={(e) => e.preventDefault()}>
                                 <Grid container spacing={2}>
@@ -147,20 +147,6 @@ export const LogInScreen = () => {
                                         >
                                             Ingresar
                                         </Button>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography variant='body1'>
-                                            <Link to='/recover_account' className='link'>
-                                                Olvide mi contrasena
-                                            </Link>
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography variant='body1'>
-                                            <Link to='/new_account' className='link'>
-                                                Quiero crear una nueva cuenta
-                                            </Link>
-                                        </Typography>
                                     </Grid>
                                 </Grid>
                             </form>

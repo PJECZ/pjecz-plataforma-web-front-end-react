@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import LabelIcon from '@mui/icons-material/Label';
-import PersonIcon from '@mui/icons-material/Person'
+import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
 import '../../css/global.css';
 
 
@@ -82,9 +83,13 @@ export const Navigation = () => {
                     </Box>
 
                     <Button key='perfil' sx={navigationStyles.menuButton}>
-                        <Link to='/auth/profile' className='app-bar-desktop-link'>
+                        <Link to='/profile' className='app-bar-desktop-link'>
                             <PersonIcon fontSize="small" sx={navigationStyles.menuIcon} />
                             Perfil
+                        </Link>
+                        <Link to='/logout' className='app-bar-desktop-link'>
+                            <LogoutIcon fontSize="small" sx={navigationStyles.menuIcon} />
+                            Salir
                         </Link>
                     </Button>
 

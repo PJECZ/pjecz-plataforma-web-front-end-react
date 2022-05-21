@@ -30,8 +30,6 @@ export const DistritosScreen = () => {
         fetchData();
     }, []);
 
-    const styles = baseStyles;
-
     if (consultado) {
         return (
             <Container sx={commonSX.container}>

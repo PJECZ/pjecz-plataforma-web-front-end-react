@@ -5,8 +5,12 @@ import { ThemeProvider } from '@mui/material';
 import { InstitutionalTheme } from '../theme/InstitutionalTheme';
 
 import { LogInScreen } from './auth/LogInScreen';
+import { LogOutScreen } from './auth/LogOutScreen';
+import { ProfileScreen } from './auth/ProfileScreen';
+
 import { DistritosScreen } from './catalogos/DistritosScreen';
 import { MateriasScreen } from './catalogos/MateriasScreen';
+
 import { Navigation } from './ui/Navigation';
 
 
@@ -26,6 +30,8 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<Layout />}>
                     <Route index element={<LogInScreen />} />
+                    <Route path='profile' element={<ProfileScreen />} />
+                    <Route path='logout' element={<LogOutScreen />} />
                     <Route path='catalogos'>
                         <Route path='distritos' element={<DistritosScreen />} />
                         <Route path='materias' element={<MateriasScreen />} />
