@@ -12,6 +12,21 @@ Ejecutar con
 
     npm start
 
+## Configuracion
+
+Crear un archivo `.bashrc` para que se aproveche en Konsole con este contenido
+
+    if [ -f ~/.bashrc ]; then
+        source ~/.bashrc
+    fi
+
+    figlet Plataforma Web front-end React
+    echo
+
+    echo "-- React development"
+    echo "   npm start"
+    echo
+
 ## Instalacion desde cero
 
 Crear la app recat con
