@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Distritos } from '../../actions/DistritosActions';
+import { commonSX } from '../ui/commonSX';
 
 
 export const DistritosScreen = () => {
@@ -29,10 +30,14 @@ export const DistritosScreen = () => {
         fetchData();
     }, []);
 
+    const styles = baseStyles;
+
     if (consultado) {
         return (
-            <Container sx={{ marginTop: 12 }}>
-                <Typography variant='h3' sx={{ marginBottom: 2 }}>Distritos</Typography>
+            <Container sx={commonSX.container}>
+                <Typography variant='h5' sx={commonSX.title}>
+                    Distritos
+                </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
@@ -52,8 +57,10 @@ export const DistritosScreen = () => {
         );
     } else {
         return (
-            <Container sx={{ marginTop: 12 }}>
-                <Typography variant='h3'>Cargando...</Typography>
+            <Container sx={commonSX.container}>
+                <Typography variant='h3' sx={commonSX.title}>
+                    Cargando...
+                </Typography>
             </Container>
         );
     };

@@ -1,5 +1,5 @@
 
-export const baseStyles = {
+export const commonSX = {
     container: { marginTop: 12 },
     card: { padding: 4 },
     avatar: { padding: 4 },

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { commonSX } from '../ui/commonSX';
 import '../../css/global.css';
 
 
@@ -65,12 +66,12 @@ export const LogInScreen = () => {
 
     if (isLoggedIn) {
         return (
-            <Container sx={{ marginTop: 12 }}>
+            <Container sx={commonSX.container}>
                 <Grid container spacing={2}>
                     <Grid item md={3} xs={12}></Grid>
                     <Grid item md={6} xs={12}>
-                        <Card align='center' sx={{ padding: 4 }}>
-                            <Typography variant='h5' sx={{ marginBottom: 2 }}>
+                        <Card align='center' sx={commonSX.card}>
+                            <Typography variant='h5' sx={commonSX.title}>
                                 Bienvenido
                             </Typography>
                         </Card>
@@ -81,12 +82,12 @@ export const LogInScreen = () => {
         );
     } else if (isError) {
         return (
-            <Container sx={{ marginTop: 12 }}>
+            <Container sx={commonSX.container}>
                 <Grid container spacing={2}>
                     <Grid item md={3} xs={12}></Grid>
                     <Grid item md={6} xs={12}>
-                        <Card align='center' sx={{ padding: 4 }}>
-                            <Typography variant='h5' sx={{ marginBottom: 2 }}>
+                        <Card align='center' sx={commonSX.card}>
+                            <Typography variant='h5' sx={commonSX.title}>
                                 Error al tratar de ingresar
                             </Typography>
                             <Typography variant='body1'>
@@ -100,12 +101,12 @@ export const LogInScreen = () => {
         );
     } else {
         return (
-            <Container sx={{ marginTop: 12 }}>
+            <Container sx={commonSX.container}>
                 <Grid container spacing={2}>
                     <Grid item md={3} xs={12}></Grid>
                     <Grid item md={6} xs={12}>
                         <Card align='center' sx={{ padding: 4 }}>
-                            <Typography variant='h5' sx={{ marginBottom: 2 }}>
+                            <Typography variant='h5' sx={commonSX.title}>
                                 Ingresar al Sistema de Citas
                             </Typography>
                             <form onSubmit={(e) => e.preventDefault()}>
