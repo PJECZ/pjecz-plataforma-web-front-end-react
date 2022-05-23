@@ -2,7 +2,7 @@
 
 Front-End hecho en React de Plataforma Web
 
-## Instalacion
+## Instalacion y configuracion
 
 Para hacer la instalacion a partir de `package.json`
 
@@ -12,9 +12,7 @@ Ejecutar con
 
     npm start
 
-## Configuracion
-
-Crear un archivo `.bashrc` para que se aproveche en Konsole con este contenido
+Es util crear un archivo `.bashrc` para cargar en Konsole
 
     if [ -f ~/.bashrc ]; then
         source ~/.bashrc

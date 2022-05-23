@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import { commonSX } from '../ui/commonSX';
-import '../../css/global.css';
+import React, { useState } from 'react'
+import axios from 'axios'
+import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { commonSX } from '../ui/commonSX'
+import '../../css/global.css'
 
 
 const cleanFormData = {
@@ -14,24 +14,24 @@ const cleanFormData = {
 
 export const LogInScreen = () => {
 
-    let navigate = useNavigate();
+    let navigate = useNavigate()
 
     const [formData, setFormValues] = useState({
         username: '',
         password: '',
-    });
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    })
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        const { name, value } = event.target
         setFormValues((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
-            };
-        });
+            }
+        })
     }
 
     const submitForm = () => {
@@ -39,29 +39,29 @@ export const LogInScreen = () => {
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         };
-        const params = new URLSearchParams();
-        params.append('username', formData.username);
-        params.append('password', formData.password);
+        const params = new URLSearchParams()
+        params.append('username', formData.username)
+        params.append('password', formData.password)
         axios.post('/token', params, headers).then( result => {
             if (result.status === 200) {
                 // Exito
-                const { data } = result;
-                navigate('/catalogos/distritos');
-                window.localStorage.setItem('data', JSON.stringify(data));
-                setIsLoggedIn(true);
+                const { data } = result
+                navigate('/catalogos/distritos')
+                window.localStorage.setItem('data', JSON.stringify(data))
+                setIsLoggedIn(true)
             } else {
                 // ERROR fatal en inicio de sesion
-                setIsError(true);
-                setErrorMessage('ERROR fatal en inicio de sesion');
+                setIsError(true)
+                setErrorMessage('ERROR fatal en inicio de sesion')
             }
         })
         .catch( error => {
             // FALLO el inicio de sesion, mostrar el mensaje de la API
-            setIsError(true);
-            setErrorMessage(error.response.data.detail);
+            setIsError(true)
+            setErrorMessage(error.response.data.detail)
         });
         // Limpiar formulario
-        setFormValues(cleanFormData);
+        setFormValues(cleanFormData)
     }
 
     if (isLoggedIn) {
@@ -98,7 +98,7 @@ export const LogInScreen = () => {
                     <Grid item md={3} xs={12}></Grid>
                 </Grid>
             </Container>
-        );
+        )
     } else {
         return (
             <Container sx={commonSX.container}>
@@ -155,7 +155,7 @@ export const LogInScreen = () => {
                     <Grid item md={3} xs={12}></Grid>
                 </Grid>
             </Container>
-        );
+        )
     }
 
 }

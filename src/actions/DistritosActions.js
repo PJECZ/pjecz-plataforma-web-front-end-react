@@ -2,7 +2,7 @@ import HttpClientToken from '../services/HttpClientToken';
 
 
 export const Distritos = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, eject) => {
         const data = JSON.parse(window.localStorage.getItem('data'));
         if (data) {
             const { access_token } = data;
@@ -19,7 +19,7 @@ export const Distritos = () => {
 
 
 export const Distrito = (id) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, eject) => {
         const data = JSON.parse(window.localStorage.getItem('data'));
         if (data) {
             const { token } = data;
