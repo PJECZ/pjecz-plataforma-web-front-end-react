@@ -14,7 +14,7 @@ export const MateriasScreen = () => {
         if (!data) {
             navigate('/')
         }
-    }, [])
+    })
 
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)

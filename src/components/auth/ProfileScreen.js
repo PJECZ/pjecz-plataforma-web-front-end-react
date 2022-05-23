@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Grid, TextField, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { commonSX } from '../ui/commonSX'
 import '../../css/global.css'
 
 
 export const ProfileScreen = () => {
+
+    // Redirigir a la raiz cuando no haya iniciado sesion
+    const data = JSON.parse(window.localStorage.getItem('data'))
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!data) {
+            navigate('/')
+        }
+    })
+
     return (
         <Container sx={commonSX.container}>
             <Typography variant='h5' sx={commonSX.title}>
@@ -77,4 +88,5 @@ export const ProfileScreen = () => {
             </Grid>
         </Container>
     )
+
 }

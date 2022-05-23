@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
 import { Link } from 'react-router-dom'
@@ -7,10 +7,25 @@ import HomeIcon from '@mui/icons-material/Home'
 import LabelIcon from '@mui/icons-material/Label'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout'
+import LoginIcon from '@mui/icons-material/Login'
 import '../../css/global.css'
 
 
 export const Navigation = () => {
+
+    // Determinar si el usuario esta logueado
+    const [isLogged, setIsLogged] = useState(false)
+    function checkStorage() {
+        if (window.localStorage.getItem('data')) {
+            setIsLogged(true)
+        } else {
+            setIsLogged(false)
+        }
+    }
+    useEffect(() => {
+        checkStorage()
+        return () => {}
+    }, [isLogged])
 
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
@@ -82,16 +97,26 @@ export const Navigation = () => {
                         </Menu>
                     </Box>
 
-                    <Button key='perfil' sx={navigationStyles.menuButton}>
-                        <Link to='/profile' className='app-bar-desktop-link'>
-                            <PersonIcon fontSize="small" sx={navigationStyles.menuIcon} />
-                            Perfil
-                        </Link>
-                        <Link to='/logout' className='app-bar-desktop-link'>
-                            <LogoutIcon fontSize="small" sx={navigationStyles.menuIcon} />
-                            Salir
-                        </Link>
-                    </Button>
+
+                    { isLogged ? (
+                        <Button key='perfil' sx={navigationStyles.menuButton}>
+                            <Link to='/profile' className='app-bar-desktop-link'>
+                                <PersonIcon fontSize="small" sx={navigationStyles.menuIcon} />
+                                Perfil
+                            </Link>
+                            <Link to='/logout' className='app-bar-desktop-link'>
+                                <LogoutIcon fontSize="small" sx={navigationStyles.menuIcon} />
+                                Salir
+                            </Link>
+                        </Button>
+                    ) : (
+                        <Button key='login' sx={navigationStyles.menuButton}>
+                            <Link to='/' className='app-bar-desktop-link'>
+                                <LoginIcon fontSize="small" sx={navigationStyles.menuIcon} />
+                                Acceder
+                            </Link>
+                        </Button>
+                    )}
 
                 </Toolbar>
             </AppBar>

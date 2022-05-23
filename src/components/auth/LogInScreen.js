@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { commonSX } from '../ui/commonSX'
 import '../../css/global.css'
 
@@ -92,6 +92,11 @@ export const LogInScreen = () => {
                             </Typography>
                             <Typography variant='body1'>
                                 {errorMessage}
+                            </Typography>
+                            <Typography variant='body1'>
+                                <Link to='/' className='link'>
+                                    Regresar al inicio
+                                </Link>
                             </Typography>
                         </Card>
                     </Grid>
