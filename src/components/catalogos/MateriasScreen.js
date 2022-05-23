@@ -7,18 +7,17 @@ import { commonSX } from '../ui/commonSX'
 
 export const MateriasScreen = () => {
 
-    let navigate = useNavigate()
+    // Redirigir a la raiz cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
-
+    const navigate = useNavigate()
     useEffect(() => {
         if (!data) {
             navigate('/')
         }
-    }, [data])
+    }, [])
 
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
-
     useEffect(() => {
         async function fetchData() {
             const response = await Materias()
