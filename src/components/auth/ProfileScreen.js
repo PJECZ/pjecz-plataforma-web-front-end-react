@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { Container, Grid, TextField, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { commonSX } from '../ui/commonSX'
+import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
 
 
-export const ProfileScreen = () => {
+const ProfileScreen = () => {
 
     // Redirigir a la raiz cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -90,3 +90,5 @@ export const ProfileScreen = () => {
     )
 
 }
+
+export default ProfileScreen

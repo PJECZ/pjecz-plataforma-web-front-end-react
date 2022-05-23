@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { Distritos } from '../../actions/DistritosActions'
-import { commonSX } from '../ui/commonSX'
+import commonSX from '../../theme/CommonSX'
 
 
-export const DistritosScreen = () => {
+const DistritosScreen = () => {
 
     // Redirigir a la raiz cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -63,3 +63,5 @@ export const DistritosScreen = () => {
     }
 
 }
+
+export default DistritosScreen

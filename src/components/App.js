@@ -2,15 +2,16 @@ import React from 'react'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 
-import { InstitutionalTheme } from '../theme/InstitutionalTheme'
-import { Navigation } from './ui/Navigation'
+import InstitutionalTheme from '../theme/InstitutionalTheme'
+import Navigation from './ui/Navigation'
 
-import { LogInScreen } from './auth/LogInScreen'
-import { LogOutScreen } from './auth/LogOutScreen'
-import { ProfileScreen } from './auth/ProfileScreen'
+import LogInScreen from './auth/LogInScreen'
+import LogOutScreen from './auth/LogOutScreen'
+import ProfileScreen from './auth/ProfileScreen'
 
-import { DistritosScreen } from './catalogos/DistritosScreen'
-import { MateriasScreen } from './catalogos/MateriasScreen'
+import DistritosScreen from './catalogos/DistritosScreen'
+import MateriasScreen from './catalogos/MateriasScreen'
+
 
 const Layout = () => {
     return(
