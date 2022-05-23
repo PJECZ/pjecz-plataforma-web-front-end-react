@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { Materias } from '../../actions/MateriasActions';
-import { commonSX } from '../ui/commonSX';
+import React, { useState, useEffect } from 'react'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { Materias } from '../../actions/MateriasActions'
+import { commonSX } from '../ui/commonSX'
 
 
 export const MateriasScreen = () => {
 
-    let navigate = useNavigate();
-    const data = JSON.parse(window.localStorage.getItem('data'));
+    let navigate = useNavigate()
+    const data = JSON.parse(window.localStorage.getItem('data'))
 
     useEffect(() => {
         if (!data) {
-            navigate('/');
+            navigate('/')
         }
-    }, [data]);
+    }, [data])
 
-    const [datos, setDatos] = useState([]);
-    const [consultado, setConsultado] = useState(false);
+    const [datos, setDatos] = useState([])
+    const [consultado, setConsultado] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
-            const response = await Materias();
+            const response = await Materias()
             if (response.status === 200) {
-                setDatos(response.data.items);
-                setConsultado(true);
+                setDatos(response.data.items)
+                setConsultado(true)
             }
         }
-        fetchData();
-    }, []);
+        fetchData()
+    }, [])
 
     if (consultado) {
         return (
@@ -52,7 +52,7 @@ export const MateriasScreen = () => {
                     </TableContainer>
                 </Card>
             </Container>
-        );
+        )
     } else {
         return (
             <Container sx={commonSX.container}>
@@ -60,7 +60,7 @@ export const MateriasScreen = () => {
                     Cargando...
                 </Typography>
             </Container>
-        );
-    };
+        )
+    }
 
 }

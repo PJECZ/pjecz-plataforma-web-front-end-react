@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/material';
-import { Box } from '@mui/system';
-import { Link } from 'react-router-dom';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import LabelIcon from '@mui/icons-material/Label';
-import PersonIcon from '@mui/icons-material/Person';
-import LogoutIcon from '@mui/icons-material/Logout';
-import '../../css/global.css';
+import React, { useState } from 'react'
+import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
+import { Box } from '@mui/system'
+import { Link } from 'react-router-dom'
+import MenuIcon from '@mui/icons-material/Menu'
+import HomeIcon from '@mui/icons-material/Home'
+import LabelIcon from '@mui/icons-material/Label'
+import PersonIcon from '@mui/icons-material/Person'
+import LogoutIcon from '@mui/icons-material/Logout'
+import '../../css/global.css'
 
 
 export const Navigation = () => {
 
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+    const [anchorEl, setAnchorEl] = useState(null)
+    const open = Boolean(anchorEl)
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+        setAnchorEl(event.currentTarget)
+    }
     const handleClose = () => {
-        setAnchorEl(null);
-    };
+        setAnchorEl(null)
+    }
 
     const navigationStyles = {
         box: { flexGrow: 1, mt: 15 },
@@ -96,6 +96,6 @@ export const Navigation = () => {
                 </Toolbar>
             </AppBar>
         </Box>
-    );
+    )
 
 }
