@@ -38,7 +38,7 @@ export const LogInScreen = () => {
         // Enviar formulario para iniciar sesion
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
-        };
+        }
         const params = new URLSearchParams()
         params.append('username', formData.username)
         params.append('password', formData.password)
@@ -59,7 +59,7 @@ export const LogInScreen = () => {
             // FALLO el inicio de sesion, mostrar el mensaje de la API
             setIsError(true)
             setErrorMessage(error.response.data.detail)
-        });
+        })
         // Limpiar formulario
         setFormValues(cleanFormData)
     }
@@ -79,7 +79,7 @@ export const LogInScreen = () => {
                     <Grid item md={3} xs={12}></Grid>
                 </Grid>
             </Container>
-        );
+        )
     } else if (isError) {
         return (
             <Container sx={commonSX.container}>

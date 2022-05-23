@@ -1,7 +1,7 @@
-import React from 'react';
-import { Container, Grid, TextField, Typography } from '@mui/material';
-import { commonSX } from '../ui/commonSX';
-import '../../css/global.css';
+import React from 'react'
+import { Container, Grid, TextField, Typography } from '@mui/material'
+import { commonSX } from '../ui/commonSX'
+import '../../css/global.css'
 
 
 export const ProfileScreen = () => {
@@ -76,5 +76,5 @@ export const ProfileScreen = () => {
                 </Grid>
             </Grid>
         </Container>
-    );
+    )
 }
