@@ -1,59 +1,24 @@
-import HttpClient from '../services/HttpClient'
+import axios from 'axios'
 
 
-export const NewAccount = data => {
+export const LogIn = usuario => {
     return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_registros', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
-    })
-}
-
-export const NewAccountConfirm = data => {
-    return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_registros_confirm', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
-    })
-}
-
-export const RecoverAccount = data => {
-    return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_recuperaciones', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
-    })
-}
-
-
-export const RecoverAccountConfirm = data => {
-    return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_recuperaciones_confirm', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        const params = new URLSearchParams()
+        params.append('username', formData.username)
+        params.append('password', formData.password)
+        axios.post('/token', params, headers).then( response => {
+            if (response.status === 200) {
+                const { data } = response
+                window.localStorage.setItem('data', JSON.stringify(data))
+            } else {
+                resolve(response)
+            }
+        })
+        .catch( error => {
+            resolve(error.response)
+        })
     })
 }
