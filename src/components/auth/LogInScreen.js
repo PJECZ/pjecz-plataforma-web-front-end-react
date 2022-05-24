@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { LogIn } from '../../actions/AuthActions'
@@ -13,14 +13,12 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    // let navigate = useNavigate()
-
     // Formulario de login
     const [formData, setFormValues] = useState({
         username: '',
         password: '',
     })
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLogged, setIsLogged] = useState(false)
     const [isError, setIsError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -39,10 +37,9 @@ const LogInScreen = () => {
     const submitForm = () => {
         LogIn(formData).then( (response) => {
             if (response.status === 200) {
-                setIsLoggedIn(true)
+                setIsLogged(true)
                 const { data } = response
                 window.localStorage.setItem('data', JSON.stringify(data))
-                // navigate('/catalogos/distritos')
             } else {
                 setIsError(true)
                 setErrorMessage(response.data.detail)
@@ -51,20 +48,26 @@ const LogInScreen = () => {
         setFormValues(cleanFormData)
     }
 
-    if (isLoggedIn) {
+    // Revisar si ya esta logueado
+    function checkStorage() {
+        if (window.localStorage.getItem('data')) {
+            setIsLogged(true)
+        } else {
+            setIsLogged(false)
+        }
+    }
+    useEffect(() => {
+        checkStorage()
+        return () => {}
+    }, [isLogged])
+
+    // Entregar el componente
+    if (isLogged) {
         return (
             <Container sx={commonSX.container}>
-                <Grid container spacing={2}>
-                    <Grid item md={3} xs={12}></Grid>
-                    <Grid item md={6} xs={12}>
-                        <Card align='center' sx={commonSX.card}>
-                            <Typography variant='h5' sx={commonSX.title}>
-                                Bienvenido
-                            </Typography>
-                        </Card>
-                    </Grid>
-                    <Grid item md={3} xs={12}></Grid>
-                </Grid>
+                <Typography variant='h5' sx={commonSX.title}>
+                    Bienvenido
+                </Typography>
             </Container>
         )
     } else if (isError) {
