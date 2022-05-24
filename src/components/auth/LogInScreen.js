@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { LogIn } from '../../actions/AuthActions'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
 
@@ -13,16 +13,16 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    let navigate = useNavigate()
-
+    // Formulario de login
     const [formData, setFormValues] = useState({
         username: '',
         password: '',
     })
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLogged, setIsLogged] = useState(false)
     const [isError, setIsError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
+    // Observar los cambios en los campos del formulario
     const handleChange = (event) => {
         const { name, value } = event.target
         setFormValues((prevState) => {
@@ -33,50 +33,41 @@ const LogInScreen = () => {
         })
     }
 
+    // Enviar el formulario de login
     const submitForm = () => {
-        // Enviar formulario para iniciar sesion
-        const headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-        const params = new URLSearchParams()
-        params.append('username', formData.username)
-        params.append('password', formData.password)
-        axios.post('/token', params, headers).then( result => {
-            if (result.status === 200) {
-                // Exito
-                const { data } = result
-                navigate('/catalogos/distritos')
+        LogIn(formData).then( (response) => {
+            if (response.status === 200) {
+                setIsLogged(true)
+                const { data } = response
                 window.localStorage.setItem('data', JSON.stringify(data))
-                setIsLoggedIn(true)
             } else {
-                // ERROR fatal en inicio de sesion
                 setIsError(true)
-                setErrorMessage('ERROR fatal en inicio de sesion')
+                setErrorMessage(response.data.detail)
             }
         })
-        .catch( error => {
-            // FALLO el inicio de sesion, mostrar el mensaje de la API
-            setIsError(true)
-            setErrorMessage(error.response.data.detail)
-        })
-        // Limpiar formulario
         setFormValues(cleanFormData)
     }
 
-    if (isLoggedIn) {
+    // Revisar si ya esta logueado
+    function checkStorage() {
+        if (window.localStorage.getItem('data')) {
+            setIsLogged(true)
+        } else {
+            setIsLogged(false)
+        }
+    }
+    useEffect(() => {
+        checkStorage()
+        return () => {}
+    }, [isLogged])
+
+    // Entregar el componente
+    if (isLogged) {
         return (
             <Container sx={commonSX.container}>
-                <Grid container spacing={2}>
-                    <Grid item md={3} xs={12}></Grid>
-                    <Grid item md={6} xs={12}>
-                        <Card align='center' sx={commonSX.card}>
-                            <Typography variant='h5' sx={commonSX.title}>
-                                Bienvenido
-                            </Typography>
-                        </Card>
-                    </Grid>
-                    <Grid item md={3} xs={12}></Grid>
-                </Grid>
+                <Typography variant='h5' sx={commonSX.title}>
+                    Bienvenido
+                </Typography>
             </Container>
         )
     } else if (isError) {

@@ -1,56 +1,19 @@
-import HttpClient from '../services/HttpClient'
+import axios from 'axios'
+
+axios.defaults.baseURL = process.env.REACT_APP_URL_BASE
 
 
-export const NewAccount = data => {
+export const LogIn = (cliente) => {
     return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_registros', data)
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        const params = new URLSearchParams()
+        params.append('username', cliente.username)
+        params.append('password', cliente.password)
+        axios.post('/token', params, headers)
             .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
-    })
-}
-
-export const NewAccountConfirm = data => {
-    return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_registros_confirm', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
-    })
-}
-
-export const RecoverAccount = data => {
-    return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_recuperaciones', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
-            })
-            .catch((error) => {
-                resolve(error.response)
-            })
-    })
-}
-
-
-export const RecoverAccountConfirm = data => {
-    return new Promise((resolve, reject) => {
-        HttpClient.post('/cit_clientes_recuperaciones_confirm', data)
-            .then(response => {
-                if (response.status === 200) {
-                    resolve(response)
-                }
+                resolve(response)
             })
             .catch((error) => {
                 resolve(error.response)

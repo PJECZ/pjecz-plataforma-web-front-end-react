@@ -25,9 +25,7 @@ export const Materia = (id) => {
             const { token } = data
             HttpCliente.get(`/v1/materias/${id}`, token)
                 .then(response => {
-                    if (response.status === 200) {
-                        resolve(response)
-                    }
+                    resolve(response)
                 })
                 .catch((error) => {
                     resolve(error.response)

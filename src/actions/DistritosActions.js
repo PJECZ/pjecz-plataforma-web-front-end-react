@@ -25,9 +25,7 @@ export const Distrito = (id) => {
             const { token } = data
             HttpClientToken.get(`/v1/distritos/${id}`, token)
                 .then(response => {
-                    if (response.status === 200) {
-                        resolve(response)
-                    }
+                    resolve(response)
                 })
                 .catch((error) => {
                     resolve(error.response)
