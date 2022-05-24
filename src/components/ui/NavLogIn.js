@@ -8,8 +8,6 @@ import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
 
-const settings = ['profile', 'logout'];
-
 const NavLogIn = () => {
 
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -41,15 +39,20 @@ const NavLogIn = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Link to='/{setting}'>
-                            <Typography textAlign="center">
-                                {setting}
-                            </Typography>
-                        </Link>
-                    </MenuItem>
-                ))}
+                <MenuItem key='profile' onClick={handleCloseUserMenu}>
+                    <Link to='/profile'>
+                        <Typography textAlign="center">
+                            Perfil
+                        </Typography>
+                    </Link>
+                </MenuItem>
+                <MenuItem key='logout' onClick={handleCloseUserMenu}>
+                    <Link to='/logout'>
+                        <Typography textAlign="center">
+                            Salir
+                        </Typography>
+                    </Link>
+                </MenuItem>
             </Menu>
         </Box>
     )
