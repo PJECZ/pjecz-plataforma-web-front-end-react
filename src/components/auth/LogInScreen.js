@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
+import { LogIn } from '../../actions/AuthActions'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
 
@@ -34,32 +35,21 @@ const LogInScreen = () => {
     }
 
     const submitForm = () => {
-        // Enviar formulario para iniciar sesion
-        const headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-        const params = new URLSearchParams()
-        params.append('username', formData.username)
-        params.append('password', formData.password)
-        axios.post('/token', params, headers).then( result => {
-            if (result.status === 200) {
-                // Exito
-                const { data } = result
-                navigate('/catalogos/distritos')
-                window.localStorage.setItem('data', JSON.stringify(data))
-                setIsLoggedIn(true)
-            } else {
-                // ERROR fatal en inicio de sesion
-                setIsError(true)
-                setErrorMessage('ERROR fatal en inicio de sesion')
+        useEffect(() => {
+            async function fetchData() {
+                const response = await LogIn(formData.username, formData.password)
+                if (response.status === 200) {
+                    const { data } = response
+                    window.localStorage.setItem('data', JSON.stringify(data))
+                    setIsLoggedIn(true)
+                    // navigate('/catalogos/distritos')
+                } else {
+                    setIsError(true)
+                    setErrorMessage(response.data.message)
+                }
             }
-        })
-        .catch( error => {
-            // FALLO el inicio de sesion, mostrar el mensaje de la API
-            setIsError(true)
-            setErrorMessage(error.response.data.detail)
-        })
-        // Limpiar formulario
+            fetchData()
+        }, [])
         setFormValues(cleanFormData)
     }
 
