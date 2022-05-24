@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { Distritos } from '../../actions/DistritosActions';
+import React, { useState, useEffect } from 'react'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { Distritos } from '../../actions/DistritosActions'
+import commonSX from '../../theme/CommonSX'
 
 
-export const DistritosScreen = () => {
+const DistritosScreen = () => {
 
-    let navigate = useNavigate();
-    const data = JSON.parse(window.localStorage.getItem('data'));
-
+    // Redirigir a la raiz cuando no haya iniciado sesion
+    const data = JSON.parse(window.localStorage.getItem('data'))
+    const navigate = useNavigate()
     useEffect(() => {
         if (!data) {
-            navigate('/');
+            navigate('/')
         }
-    }, [data]);
+    })
 
-    const [datos, setDatos] = useState([]);
-    const [consultado, setConsultado] = useState(false);
-
+    const [datos, setDatos] = useState([])
+    const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distritos();
+            const response = await Distritos()
             if (response.status === 200) {
-                setDatos(response.data.items);
-                setConsultado(true);
+                setDatos(response.data.items)
+                setConsultado(true)
             }
         }
-        fetchData();
-    }, []);
+        fetchData()
+    }, [])
 
     if (consultado) {
         return (
-            <Container sx={{ marginTop: 12 }}>
-                <Typography variant='h3' sx={{ marginBottom: 2 }}>Distritos</Typography>
+            <Container sx={commonSX.container}>
+                <Typography variant='h5' sx={commonSX.title}>
+                    Distritos
+                </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
@@ -49,13 +51,17 @@ export const DistritosScreen = () => {
                     </TableContainer>
                 </Card>
             </Container>
-        );
+        )
     } else {
         return (
-            <Container sx={{ marginTop: 12 }}>
-                <Typography variant='h3'>Cargando...</Typography>
+            <Container sx={commonSX.container}>
+                <Typography variant='h3' sx={commonSX.title}>
+                    Cargando...
+                </Typography>
             </Container>
-        );
-    };
+        )
+    }
 
 }
+
+export default DistritosScreen

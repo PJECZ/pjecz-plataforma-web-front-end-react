@@ -2,7 +2,11 @@
 
 Front-End hecho en React de Plataforma Web
 
-## Instalacion
+## Configuracion
+
+Crear un archivo `.env` con las variables de entorno
+
+    REACT_APP_URL_BASE=http://127.0.0.2:8002
 
 Para hacer la instalacion a partir de `package.json`
 
@@ -11,6 +15,24 @@ Para hacer la instalacion a partir de `package.json`
 Ejecutar con
 
     npm start
+
+Es util crear un archivo `.bashrc` para cargar en Konsole
+
+    if [ -f ~/.bashrc ]; then
+        source ~/.bashrc
+    fi
+
+    if [ -f .env ]; then
+        export $(grep -v '^#' .env | xargs)
+    fi
+
+    figlet Plataforma Web front-end React
+    echo
+
+    alias arrancar="npm start"
+    echo "-- React development"
+    echo "   npm start"
+    echo
 
 ## Instalacion desde cero
 
