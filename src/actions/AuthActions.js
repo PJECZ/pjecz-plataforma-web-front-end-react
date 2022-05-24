@@ -1,19 +1,21 @@
 import axios from 'axios'
 
+axios.defaults.baseURL = process.env.REACT_APP_URL_BASE
 
-export const LogIn = (username, password) => {
+
+export const LogIn = (cliente) => {
     return new Promise((resolve, reject) => {
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
         const params = new URLSearchParams()
-        params.append('username', username)
-        params.append('password', password)
+        params.append('username', cliente.username)
+        params.append('password', cliente.password)
         axios.post('/token', params, headers)
-            .then( response => {
+            .then(response => {
                 resolve(response)
             })
-            .catch( error => {
+            .catch((error) => {
                 resolve(error.response)
             })
     })

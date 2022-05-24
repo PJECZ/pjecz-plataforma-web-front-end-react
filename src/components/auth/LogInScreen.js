@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { LogIn } from '../../actions/AuthActions'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
@@ -13,8 +13,9 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    //let navigate = useNavigate()
+    // let navigate = useNavigate()
 
+    // Formulario de login
     const [formData, setFormValues] = useState({
         username: '',
         password: '',
@@ -23,6 +24,7 @@ const LogInScreen = () => {
     const [isError, setIsError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
+    // Observar los cambios en los campos del formulario
     const handleChange = (event) => {
         const { name, value } = event.target
         setFormValues((prevState) => {
@@ -33,22 +35,19 @@ const LogInScreen = () => {
         })
     }
 
+    // Enviar el formulario de login
     const submitForm = () => {
-        useEffect(() => {
-            async function fetchData() {
-                const response = await LogIn(formData.username, formData.password)
-                if (response.status === 200) {
-                    const { data } = response
-                    window.localStorage.setItem('data', JSON.stringify(data))
-                    setIsLoggedIn(true)
-                    // navigate('/catalogos/distritos')
-                } else {
-                    setIsError(true)
-                    setErrorMessage(response.data.message)
-                }
+        LogIn(formData).then( (response) => {
+            if (response.status === 200) {
+                setIsLoggedIn(true)
+                const { data } = response
+                window.localStorage.setItem('data', JSON.stringify(data))
+                // navigate('/catalogos/distritos')
+            } else {
+                setIsError(true)
+                setErrorMessage(response.data.detail)
             }
-            fetchData()
-        }, [])
+        })
         setFormValues(cleanFormData)
     }
 

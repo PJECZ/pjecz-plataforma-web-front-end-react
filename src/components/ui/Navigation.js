@@ -4,7 +4,6 @@ import { Container } from '@mui/system'
 import AdbIcon from '@mui/icons-material/Adb'
 import NavCatalogos from './NavCatalogos'
 import NavLogIn from './NavLogIn'
-import NavLogOut from './NavLogOut'
 import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
