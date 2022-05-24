@@ -6,7 +6,7 @@ Front-End hecho en React de Plataforma Web
 
 Crear un archivo `.env` con las variables de entorno
 
-    REACT_APP_URL_BASE=http://127.0.0.2:8002
+    REACT_APP_URL_BASE=http://127.0.0.2:8005
 
 Para hacer la instalacion a partir de `package.json`
 

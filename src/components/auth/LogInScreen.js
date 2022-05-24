@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { LogIn } from '../../actions/AuthActions'
@@ -14,7 +13,7 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    let navigate = useNavigate()
+    //let navigate = useNavigate()
 
     const [formData, setFormValues] = useState({
         username: '',
