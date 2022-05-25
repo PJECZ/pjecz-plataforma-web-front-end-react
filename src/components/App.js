@@ -11,9 +11,10 @@ import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
 
-// catalogos
-import DistritosScreen from './catalogos/DistritosScreen'
-import MateriasScreen from './catalogos/MateriasScreen'
+// autoridades
+import AutoridadesScreen from './autoridades/AutoridadesScreen'
+import DistritosScreen from './autoridades/DistritosScreen'
+import MateriasScreen from './autoridades/MateriasScreen'
 
 // inventarios
 import DomiciliosScreen from './inventarios/DomiciliosScreen'
@@ -41,7 +42,8 @@ const App = () => {
                     <Route path='login' element={<LogInScreen />} />
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
-                    <Route path='catalogos'>
+                    <Route path='autoridades'>
+                        <Route path='autoridades' element={<AutoridadesScreen />} />
                         <Route path='distritos' element={<DistritosScreen />} />
                         <Route path='materias' element={<MateriasScreen />} />
                     </Route>
