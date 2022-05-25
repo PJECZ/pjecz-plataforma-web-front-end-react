@@ -19,6 +19,7 @@ import MateriasScreen from './autoridades/MateriasScreen'
 
 // inventarios
 import DomiciliosScreen from './inventarios/DomiciliosScreen'
+import OficinasScreen from './inventarios/OficinasScreen'
 
 // usuarios
 import ModulosScreen from './usuarios/ModulosScreen'
@@ -51,6 +52,7 @@ const App = () => {
                     </Route>
                     <Route path='inventarios'>
                         <Route path='domicilios' element={<DomiciliosScreen />} />
+                        <Route path='oficinas' element={<OficinasScreen />} />
                     </Route>
                     <Route path='usuarios'>
                         <Route path='modulos' element={<ModulosScreen />} />

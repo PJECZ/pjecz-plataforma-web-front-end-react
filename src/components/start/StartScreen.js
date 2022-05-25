@@ -39,6 +39,9 @@ const StartScreen = () => {
                     <ModuloCard title='Modulos' link='/usuarios/modulos' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Oficinas' link='/inventarios/oficinas' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Roles' link='/usuarios/roles' />
                 </Grid>
             </Grid>
