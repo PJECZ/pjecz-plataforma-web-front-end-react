@@ -27,6 +27,9 @@ const StartScreen = () => {
                     <ModuloCard title='Distritos' link='/catalogos/distritos' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Domicilios' link='/inventarios/domicilios' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Materias' link='/catalogos/materias' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
