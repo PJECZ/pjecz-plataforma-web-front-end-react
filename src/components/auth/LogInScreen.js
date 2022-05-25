@@ -84,7 +84,7 @@ const LogInScreen = () => {
                                 {errorMessage}
                             </Typography>
                             <Typography variant='body1'>
-                                <Link to='/' className='link'>
+                                <Link to='/' className='app-bar-desktop-link'>
                                     Regresar al inicio
                                 </Link>
                             </Typography>

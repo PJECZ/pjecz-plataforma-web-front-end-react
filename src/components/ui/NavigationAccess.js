@@ -5,17 +5,17 @@ import LoginIcon from '@mui/icons-material/Login'
 import navigationSX from '../../theme/NavigationSX'
 
 
-const NavLogOut = () => {
+const NavigationAccess = () => {
     return (
         <Box sx={navigationSX.accountBoxDesktop}>
             <Button key='login' sx={navigationSX.pagesButtonDesktop}>
-                <Link to='/' className='app-bar-desktop-link'>
+                <Link to='/login' className='link'>
                     <LoginIcon fontSize="medium" sx={navigationSX.pagesIconDesktop} />
-                    Acceder
+                    Ingresar
                 </Link>
             </Button>
         </Box>
     )
 }
 
-export default NavLogOut
+export default NavigationAccess

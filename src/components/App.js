@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material'
 
 import InstitutionalTheme from '../theme/InstitutionalTheme'
 import Navigation from './ui/Navigation'
+import StartScreen from './start/StartScreen'
 
 import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
@@ -27,7 +28,8 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Layout />}>
-                    <Route index element={<LogInScreen />} />
+                    <Route index element={<StartScreen />} />
+                    <Route path='login' element={<LogInScreen />} />
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
                     <Route path='catalogos'>

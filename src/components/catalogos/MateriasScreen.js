@@ -7,12 +7,12 @@ import commonSX from '../../theme/CommonSX'
 
 const MateriasScreen = () => {
 
-    // Redirigir a la raiz cuando no haya iniciado sesion
+    // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
     const navigate = useNavigate()
     useEffect(() => {
         if (!data) {
-            navigate('/')
+            navigate('/login')
         }
     })
 
