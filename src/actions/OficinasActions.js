@@ -18,6 +18,23 @@ export const Oficinas = () => {
 }
 
 
+export const OficinasDelDistrito = (distrito_id) => {
+    return new Promise((resolve, reject) => {
+        const data = JSON.parse(window.localStorage.getItem('data'))
+        if (data) {
+            const { access_token } = data
+            HttpCliente.get(`/v1/oficinas?distrito_id=${distrito_id}`, access_token)
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    resolve(error.response)
+                })
+        }
+    })
+}
+
+
 export const Oficina = (id) => {
     return new Promise((resolve, reject) => {
         const data = JSON.parse(window.localStorage.getItem('data'))
