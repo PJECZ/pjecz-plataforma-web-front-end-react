@@ -17,6 +17,7 @@ import MateriasScreen from './catalogos/MateriasScreen'
 
 // usuarios
 import ModulosScreen from './usuarios/ModulosScreen'
+import RolesScreen from './usuarios/RolesScreen'
 
 
 const Layout = () => {
@@ -43,6 +44,7 @@ const App = () => {
                     </Route>
                     <Route path='usuarios'>
                         <Route path='modulos' element={<ModulosScreen />} />
+                        <Route path='roles' element={<RolesScreen />} />
                     </Route>
                 </Route>
             </Routes>
