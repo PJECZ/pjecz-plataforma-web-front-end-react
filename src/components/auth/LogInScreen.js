@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Card, Container, Grid, TextField, Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
 import { LogIn } from '../../actions/AuthActions'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
@@ -13,19 +13,30 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    // Revisar si ya esta logueado
+    // Redirigir al login cuando no haya iniciado sesion
     const [isLogged, setIsLogged] = useState(false)
-    function checkStorage() {
-        if (window.localStorage.getItem('data')) {
-            setIsLogged(true)
-        } else {
-            setIsLogged(false)
-        }
-    }
+    const data = JSON.parse(window.localStorage.getItem('data'))
+    const navigate = useNavigate()
     useEffect(() => {
-        checkStorage()
-        return () => {}
-    }, [isLogged])
+        setIsLogged(true)
+        if (data) {
+            navigate('/')
+        }
+    })
+
+    // Revisar si ya esta logueado
+    //const [isLogged, setIsLogged] = useState(false)
+    //function checkStorage() {
+    //    if (window.localStorage.getItem('data')) {
+    //        setIsLogged(true)
+    //    } else {
+    //        setIsLogged(false)
+    //    }
+    //}
+    //useEffect(() => {
+    //    checkStorage()
+    //    return () => {}
+    //}, [isLogged])
 
     // Formulario de login
     const [formData, setFormValues] = useState({
@@ -81,11 +92,6 @@ const LogInScreen = () => {
                             </Typography>
                             <Typography variant='body1'>
                                 {errorMessage}
-                            </Typography>
-                            <Typography variant='body1'>
-                                <Link to='/' className='app-bar-desktop-link'>
-                                    Regresar al inicio
-                                </Link>
                             </Typography>
                         </Card>
                     </Grid>
