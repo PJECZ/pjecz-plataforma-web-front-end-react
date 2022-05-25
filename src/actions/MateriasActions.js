@@ -10,7 +10,7 @@ export const Materias = () => {
                 .then(response => {
                     resolve(response)
                 })
-                .catch((error) => {
+                .catch(error => {
                     resolve(error.response)
                 })
         }
@@ -22,12 +22,12 @@ export const Materia = (id) => {
     return new Promise((resolve, reject) => {
         const data = JSON.parse(window.localStorage.getItem('data'))
         if (data) {
-            const { token } = data
-            HttpCliente.get(`/v1/materias/${id}`, token)
+            const { access_token } = data
+            HttpCliente.get(`/v1/materias/${id}`, access_token)
                 .then(response => {
                     resolve(response)
                 })
-                .catch((error) => {
+                .catch(error => {
                     resolve(error.response)
                 })
         }

@@ -3,6 +3,8 @@ import { Card, Container, Grid, TextField, Typography } from '@mui/material'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
 
+import { Profile } from '../../actions/AuthActions'
+
 
 const ProfileScreen = () => {
 
@@ -20,6 +22,30 @@ const ProfileScreen = () => {
         return () => {}
     }, [isLogged])
 
+    // Consultar Perfil
+    const [consultado, setConsultado] = useState(false)
+    const [profile, setProfile] = useState({
+        nombres: '',
+        apellido_paterno: '',
+        apellido_materno: '',
+        curp: '',
+        email: '',
+        telefono_celular: '',
+        distrito_nombre: '',
+        autoridad_descripcion: '',
+        oficina_clave: '',
+    })
+    useEffect(() => {
+        async function fetchData() {
+            const response = await Profile()
+            if (response.status === 200) {
+                setConsultado(true)
+                setProfile(response.data)
+            }
+        }
+        fetchData()
+    }, [])
+
     if (isLogged) {
         return (
             <Container sx={commonSX.container}>
@@ -33,7 +59,7 @@ const ProfileScreen = () => {
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={'Juan Perez'}
+                            value={profile.nombres}
                         />
                     </Grid>
                     <Grid item md={6} xs={12}>
@@ -42,7 +68,7 @@ const ProfileScreen = () => {
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={'OEJV770826HTSRMÍ82'}
+                            value={profile.curp}
                         />
                     </Grid>
                     <Grid item md={6} xs={12}>
@@ -51,7 +77,7 @@ const ProfileScreen = () => {
                             type="email"
                             fullWidth
                             aria-readonly
-                            value={'juan.perez@correo.com'}
+                            value={profile.email}
                         />
                     </Grid>
                     <Grid item md={6} xs={12}>
@@ -60,7 +86,7 @@ const ProfileScreen = () => {
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={'844 111 2233'}
+                            value={profile.telefono_celular}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -69,7 +95,7 @@ const ProfileScreen = () => {
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={'Distrito Judicial de Saltillo'}
+                            value={profile.distrito_nombre}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -78,7 +104,7 @@ const ProfileScreen = () => {
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={'Oficialia Mayor'}
+                            value={profile.autoridad_descripcion}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -87,7 +113,7 @@ const ProfileScreen = () => {
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={'SLT-OM-DI'}
+                            value={profile.oficina_clave}
                         />
                     </Grid>
                 </Grid>

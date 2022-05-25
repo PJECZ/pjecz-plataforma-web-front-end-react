@@ -7,7 +7,7 @@ import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
 
-const NavigationLogged = () => {
+const NavigationLogged = (props) => {
 
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const handleOpenUserMenu = (event) => {
@@ -21,6 +21,9 @@ const NavigationLogged = () => {
         <Box sx={navigationSX.accountBoxDesktop}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <PersonIcon fontSize="medium" sx={navigationSX.accountIconDesktop} />
+                <Typography variant="caption" className='app-bar-desktop-link'>
+                    {props.username}
+                </Typography>
             </IconButton>
             <Menu
               sx={{ mt: '45px' }}

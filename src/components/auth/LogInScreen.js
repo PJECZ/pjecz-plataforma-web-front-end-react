@@ -35,7 +35,7 @@ const LogInScreen = () => {
 
     // Enviar el formulario de login
     const submitForm = () => {
-        LogIn(formData).then( (response) => {
+        LogIn(formData).then((response) => {
             if (response.status === 200) {
                 setIsLogged(true)
                 const { data } = response
@@ -61,7 +61,6 @@ const LogInScreen = () => {
         return () => {}
     }, [isLogged])
 
-    // Entregar el componente
     if (isLogged) {
         return (
             <Container sx={commonSX.container}>
