@@ -13,30 +13,16 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    // Redirigir al login cuando no haya iniciado sesion
+    // Redirigir a la pagina inicial cuando ya haya iniciado sesion
     const [isLogged, setIsLogged] = useState(false)
     const data = JSON.parse(window.localStorage.getItem('data'))
     const navigate = useNavigate()
     useEffect(() => {
-        setIsLogged(true)
         if (data) {
+            setIsLogged(true)
             navigate('/')
         }
     })
-
-    // Revisar si ya esta logueado
-    //const [isLogged, setIsLogged] = useState(false)
-    //function checkStorage() {
-    //    if (window.localStorage.getItem('data')) {
-    //        setIsLogged(true)
-    //    } else {
-    //        setIsLogged(false)
-    //    }
-    //}
-    //useEffect(() => {
-    //    checkStorage()
-    //    return () => {}
-    //}, [isLogged])
 
     // Formulario de login
     const [formData, setFormValues] = useState({

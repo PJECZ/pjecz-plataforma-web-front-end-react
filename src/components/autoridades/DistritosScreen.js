@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
@@ -33,6 +33,11 @@ const DistritosScreen = () => {
         fetchData()
     }, [])
 
+    // Ir al detalle de un Distrito
+    const detalleDistrito = (id) => {
+        navigate(`/distritos/${id}`)
+    }
+
     if (consultado) {
         return (
             <Container sx={commonSX.container}>
@@ -43,10 +48,12 @@ const DistritosScreen = () => {
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
-                                {datos.map((item, indice) =>
+                                {datos.map((distrito, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {item.nombre}
+                                            <Link to={`/autoridades/distritos/${distrito.id}`} className='link'>
+                                                {distrito.nombre}
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                 )}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
@@ -42,11 +42,20 @@ const AutoridadesScreen = () => {
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Clave</TableCell>
+                                    <TableCell>Descripcion</TableCell>
+                                </TableRow>
+                            </TableHead>
                             <TableBody>
-                                {datos.map((item, indice) =>
+                                {datos.map((autoridad, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {item.descripcion}
+                                            {autoridad.clave}
+                                        </TableCell>
+                                        <TableCell>
+                                            {autoridad.descripcion}
                                         </TableCell>
                                     </TableRow>
                                 )}

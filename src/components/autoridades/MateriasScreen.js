@@ -43,10 +43,10 @@ const MateriasScreen = () => {
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
-                                {datos.map((item, indice) =>
+                                {datos.map((materia, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {item.nombre}
+                                            {materia.nombre}
                                         </TableCell>
                                     </TableRow>
                                 )}

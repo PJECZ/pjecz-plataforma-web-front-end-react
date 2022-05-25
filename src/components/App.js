@@ -14,6 +14,7 @@ import ProfileScreen from './auth/ProfileScreen'
 // autoridades
 import AutoridadesScreen from './autoridades/AutoridadesScreen'
 import DistritosScreen from './autoridades/DistritosScreen'
+import DistritoScreen from './autoridades/DistritoScreen'
 import MateriasScreen from './autoridades/MateriasScreen'
 
 // inventarios
@@ -45,6 +46,7 @@ const App = () => {
                     <Route path='autoridades'>
                         <Route path='autoridades' element={<AutoridadesScreen />} />
                         <Route path='distritos' element={<DistritosScreen />} />
+                        <Route path='distritos/:id' element={<DistritoScreen />} />
                         <Route path='materias' element={<MateriasScreen />} />
                     </Route>
                     <Route path='inventarios'>
