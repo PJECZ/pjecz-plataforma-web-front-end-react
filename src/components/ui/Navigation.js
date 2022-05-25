@@ -19,7 +19,6 @@ const Navigation = () => {
     // Determinar si el usuario esta logueado
     const [isLogged, setIsLogged] = useState(false)
     const [username, setUsername] = useState('')
-
     useEffect(() => {
         async function fetchData() {
             const profile = await Profile()

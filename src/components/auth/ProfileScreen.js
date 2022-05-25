@@ -46,7 +46,7 @@ const ProfileScreen = () => {
         fetchData()
     }, [])
 
-    if (isLogged) {
+    if (consultado) {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
