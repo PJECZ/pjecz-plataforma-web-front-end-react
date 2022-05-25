@@ -6,7 +6,7 @@ import '../../css/global.css'
 
 const LogOutScreen = () => {
 
-    // Determinar si el usuario esta logueado
+    // Revisar si ya esta logueado
     const [isLogged, setIsLogged] = useState(false)
     function checkStorage() {
         if (window.localStorage.getItem('data')) {

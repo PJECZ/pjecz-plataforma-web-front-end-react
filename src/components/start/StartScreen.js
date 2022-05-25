@@ -28,6 +28,9 @@ const StartScreen = () => {
                 <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Materias' link='/catalogos/materias' />
                 </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Modulos' link='/usuarios/modulos' />
+                </Grid>
             </Grid>
         </Container>
     )

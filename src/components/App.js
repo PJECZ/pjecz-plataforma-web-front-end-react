@@ -6,12 +6,17 @@ import InstitutionalTheme from '../theme/InstitutionalTheme'
 import Navigation from './ui/Navigation'
 import StartScreen from './start/StartScreen'
 
+// auth
 import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
 
+// catalogos
 import DistritosScreen from './catalogos/DistritosScreen'
 import MateriasScreen from './catalogos/MateriasScreen'
+
+// usuarios
+import ModulosScreen from './usuarios/ModulosScreen'
 
 
 const Layout = () => {
@@ -35,6 +40,9 @@ const App = () => {
                     <Route path='catalogos'>
                         <Route path='distritos' element={<DistritosScreen />} />
                         <Route path='materias' element={<MateriasScreen />} />
+                    </Route>
+                    <Route path='usuarios'>
+                        <Route path='modulos' element={<ModulosScreen />} />
                     </Route>
                 </Route>
             </Routes>

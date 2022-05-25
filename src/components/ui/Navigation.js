@@ -28,7 +28,7 @@ const Navigation = () => {
                 setUsername(profile.data.email)
             } else if (profile.status === 401) {
                 setIsLogged(false)
-                //window.localStorage.removeItem('data')
+                window.localStorage.removeItem('data')
             }
         }
         fetchData()

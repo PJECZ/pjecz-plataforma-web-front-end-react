@@ -13,12 +13,25 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
+    // Revisar si ya esta logueado
+    const [isLogged, setIsLogged] = useState(false)
+    function checkStorage() {
+        if (window.localStorage.getItem('data')) {
+            setIsLogged(true)
+        } else {
+            setIsLogged(false)
+        }
+    }
+    useEffect(() => {
+        checkStorage()
+        return () => {}
+    }, [isLogged])
+
     // Formulario de login
     const [formData, setFormValues] = useState({
         username: '',
         password: '',
     })
-    const [isLogged, setIsLogged] = useState(false)
     const [isError, setIsError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -47,19 +60,6 @@ const LogInScreen = () => {
         })
         setFormValues(cleanFormData)
     }
-
-    // Revisar si ya esta logueado
-    function checkStorage() {
-        if (window.localStorage.getItem('data')) {
-            setIsLogged(true)
-        } else {
-            setIsLogged(false)
-        }
-    }
-    useEffect(() => {
-        checkStorage()
-        return () => {}
-    }, [isLogged])
 
     if (isLogged) {
         return (
