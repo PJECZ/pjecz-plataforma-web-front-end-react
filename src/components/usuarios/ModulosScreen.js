@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import commonSX from '../../theme/CommonSX'
 
-import { Distritos } from '../../actions/DistritosActions'
+import { Modulos } from '../../actions/ModulosActions'
 
 
-const DistritosScreen = () => {
+const ModulosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -17,12 +17,12 @@ const DistritosScreen = () => {
         }
     })
 
-    // Consultar Distritos
+    // Consultar Modulos
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distritos()
+            const response = await Modulos()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -35,7 +35,7 @@ const DistritosScreen = () => {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Distritos
+                    Modulos
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
@@ -66,4 +66,4 @@ const DistritosScreen = () => {
 
 }
 
-export default DistritosScreen
+export default ModulosScreen

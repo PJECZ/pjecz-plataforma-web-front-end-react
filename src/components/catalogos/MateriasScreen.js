@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { Materias } from '../../actions/MateriasActions'
 import commonSX from '../../theme/CommonSX'
+
+import { Materias } from '../../actions/MateriasActions'
 
 
 const MateriasScreen = () => {
@@ -16,6 +17,7 @@ const MateriasScreen = () => {
         }
     })
 
+    // Consultar Materias
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
