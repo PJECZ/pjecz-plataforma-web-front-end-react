@@ -25,7 +25,7 @@ const Navigation = () => {
     }, [isLogged])
 
     return (
-        <AppBar position='static'>
+        <AppBar position='absolute'>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container, Typography } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
+import ModuloCard from './ModuloCard'
 import commonSX from '../../theme/CommonSX'
 
 
@@ -20,6 +21,26 @@ const StartScreen = () => {
             <Typography variant='h5' sx={commonSX.title}>
                 Inicio
             </Typography>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Autoridades' link='/' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Direcciones' link='/' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Distritos' link='/catalogos/distritos' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Materias' link='/catalogos/materias' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Oficinas' link='/'/>
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Usuarios' link='/'/>
+                </Grid>
+            </Grid>
         </Container>
     )
 

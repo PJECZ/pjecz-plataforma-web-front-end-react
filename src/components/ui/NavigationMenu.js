@@ -8,14 +8,14 @@ import '../../css/global.css'
 const NavigationMenu = () => {
     return (
         <Box sx={navigationSX.pagesBoxDesktop}>
-            <Button key='distritos' sx={navigationSX.pagesButtonDesktop}>
-                <Link to='/catalogos/distritos' className='app-bar-desktop-link'>
-                    Distritos
+            <Button key='noticias' sx={navigationSX.pagesButtonDesktop}>
+                <Link to='/' className='app-bar-desktop-link'>
+                    Noticias
                 </Link>
             </Button>
-            <Button key='materias' sx={navigationSX.pagesButtonDesktop}>
-                <Link to='/catalogos/materias' className='app-bar-desktop-link'>
-                    Materias
+            <Button key='panel' sx={navigationSX.pagesButtonDesktop}>
+                <Link to='/' className='app-bar-desktop-link'>
+                    Panel
                 </Link>
             </Button>
         </Box>
