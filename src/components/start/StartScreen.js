@@ -23,22 +23,10 @@ const StartScreen = () => {
             </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Autoridades' link='/' />
-                </Grid>
-                <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Direcciones' link='/' />
-                </Grid>
-                <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Distritos' link='/catalogos/distritos' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Materias' link='/catalogos/materias' />
-                </Grid>
-                <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Oficinas' link='/'/>
-                </Grid>
-                <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Usuarios' link='/'/>
                 </Grid>
             </Grid>
         </Container>

@@ -8,6 +8,16 @@ import '../../css/global.css'
 const NavigationMenu = () => {
     return (
         <Box sx={navigationSX.pagesBoxDesktop}>
+            <Button key='aplicaciones' sx={navigationSX.pagesButtonDesktop}>
+                <Link to='/' className='app-bar-desktop-link'>
+                    Aplicaciones
+                </Link>
+            </Button>
+            <Button key='manuales' sx={navigationSX.pagesButtonDesktop}>
+                <Link to='/' className='app-bar-desktop-link'>
+                    Manuales
+                </Link>
+            </Button>
             <Button key='noticias' sx={navigationSX.pagesButtonDesktop}>
                 <Link to='/' className='app-bar-desktop-link'>
                     Noticias
