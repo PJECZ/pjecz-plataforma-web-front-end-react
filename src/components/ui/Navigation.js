@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { AppBar, Toolbar, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import AdbIcon from '@mui/icons-material/Adb'
-import NavCatalogos from './NavCatalogos'
-import NavLogIn from './NavLogIn'
+import NavigationMenu from './NavigationMenu'
+import NavigationLogged from './NavigationLogged'
 import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
@@ -50,8 +50,8 @@ const Navigation = () => {
                     >
                         Plataforma Web
                     </Typography>
-                    <NavCatalogos />
-                    <NavLogIn />
+                    <NavigationMenu />
+                    <NavigationLogged />
 
                 </Toolbar>
             </Container>

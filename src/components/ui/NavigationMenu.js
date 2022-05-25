@@ -5,7 +5,7 @@ import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
 
-const NavCatalogos = () => {
+const NavigationMenu = () => {
     return (
         <Box sx={navigationSX.pagesBoxDesktop}>
             <Button key='distritos' sx={navigationSX.pagesButtonDesktop}>
@@ -22,4 +22,4 @@ const NavCatalogos = () => {
     )
 }
 
-export default NavCatalogos
+export default NavigationMenu
