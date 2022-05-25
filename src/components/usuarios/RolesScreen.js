@@ -5,10 +5,9 @@ import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, Ta
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Distritos } from '../../actions/DistritosActions'
+import { Roles } from '../../actions/RolesActions'
 
-
-const DistritosScreen = () => {
+const RolesScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +18,12 @@ const DistritosScreen = () => {
         }
     })
 
-    // Consultar Distritos
+    // Consultar Roles
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distritos()
+            const response = await Roles()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -37,7 +36,7 @@ const DistritosScreen = () => {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Distritos
+                    Roles
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
@@ -66,4 +65,4 @@ const DistritosScreen = () => {
 
 }
 
-export default DistritosScreen
+export default RolesScreen

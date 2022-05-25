@@ -15,8 +15,12 @@ import ProfileScreen from './auth/ProfileScreen'
 import DistritosScreen from './catalogos/DistritosScreen'
 import MateriasScreen from './catalogos/MateriasScreen'
 
+// inventarios
+import DomiciliosScreen from './inventarios/DomiciliosScreen'
+
 // usuarios
 import ModulosScreen from './usuarios/ModulosScreen'
+import RolesScreen from './usuarios/RolesScreen'
 
 
 const Layout = () => {
@@ -41,8 +45,12 @@ const App = () => {
                         <Route path='distritos' element={<DistritosScreen />} />
                         <Route path='materias' element={<MateriasScreen />} />
                     </Route>
+                    <Route path='inventarios'>
+                        <Route path='domicilios' element={<DomiciliosScreen />} />
+                    </Route>
                     <Route path='usuarios'>
                         <Route path='modulos' element={<ModulosScreen />} />
+                        <Route path='roles' element={<RolesScreen />} />
                     </Route>
                 </Route>
             </Routes>

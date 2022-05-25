@@ -5,10 +5,10 @@ import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, Ta
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Distritos } from '../../actions/DistritosActions'
+import { Domicilios } from '../../actions/DomiciliosActions'
 
 
-const DistritosScreen = () => {
+const DomiciliosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +19,12 @@ const DistritosScreen = () => {
         }
     })
 
-    // Consultar Distritos
+    // Consultar Domicilios
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distritos()
+            const response = await Domicilios()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -37,7 +37,7 @@ const DistritosScreen = () => {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Distritos
+                    Domicilios
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
@@ -46,7 +46,7 @@ const DistritosScreen = () => {
                                 {datos.map((item, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {item.nombre}
+                                            {item.completo}
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -66,4 +66,4 @@ const DistritosScreen = () => {
 
 }
 
-export default DistritosScreen
+export default DomiciliosScreen

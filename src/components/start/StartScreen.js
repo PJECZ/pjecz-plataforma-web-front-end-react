@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Container, Grid, Typography } from '@mui/material'
-import ModuloCard from './ModuloCard'
+
 import commonSX from '../../theme/CommonSX'
+import ModuloCard from './ModuloCard'
 
 
 const StartScreen = () => {
@@ -26,10 +27,16 @@ const StartScreen = () => {
                     <ModuloCard title='Distritos' link='/catalogos/distritos' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Domicilios' link='/inventarios/domicilios' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Materias' link='/catalogos/materias' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
                     <ModuloCard title='Modulos' link='/usuarios/modulos' />
+                </Grid>
+                <Grid item xs={12} sm={4} md={3} lg={2}>
+                    <ModuloCard title='Roles' link='/usuarios/roles' />
                 </Grid>
             </Grid>
         </Container>

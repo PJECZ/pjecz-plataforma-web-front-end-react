@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+
 import commonSX from '../../theme/CommonSX'
+import Progress from '../ui/Progress'
 
 import { Modulos } from '../../actions/ModulosActions'
 
@@ -57,9 +59,7 @@ const ModulosScreen = () => {
     } else {
         return (
             <Container sx={commonSX.container}>
-                <Typography variant='h3' sx={commonSX.title}>
-                    Cargando...
-                </Typography>
+                <Progress />
             </Container>
         )
     }

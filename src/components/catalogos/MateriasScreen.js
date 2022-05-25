@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+
 import commonSX from '../../theme/CommonSX'
+import Progress from '../ui/Progress'
 
 import { Materias } from '../../actions/MateriasActions'
 
@@ -57,9 +59,7 @@ const MateriasScreen = () => {
     } else {
         return (
             <Container sx={commonSX.container}>
-                <Typography variant='h3' sx={commonSX.title}>
-                    Cargando...
-                </Typography>
+                <Progress />
             </Container>
         )
     }
