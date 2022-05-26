@@ -4,19 +4,19 @@ import { Card, CardContent, Paper, Table, TableBody, TableContainer, TableHead }
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Distritos } from '../../actions/DistritosActions'
+import { Oficinas } from '../../actions/OficinasActions'
 
 
-const ListDistritos = () => {
+const ListOficinas = () => {
 
-    // Consultar Distritos
-    const [distritos, setDistritos] = useState([])
+    // Consultar Oficinas
+    const [oficinas, setOficinas] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distritos()
+            const response = await Oficinas()
             if (response.status === 200) {
-                setDistritos(response.data.items)
+                setOficinas(response.data.items)
                 setConsultado(true)
             }
         }
@@ -28,17 +28,24 @@ const ListDistritos = () => {
             <Card>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Distritos
+                        Oficinas
                     </Typography>
                     <TableContainer componet={Paper}>
                         <Table size="small">
+                            <TableHead>
+                                <TableCell>Clave</TableCell>
+                                <TableCell>Descripcion</TableCell>
+                            </TableHead>
                             <TableBody>
-                                {distritos.map((distrito, indice) =>
+                                {oficinas.map((oficina, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            <Link to={`/autoridades/distritos/${distrito.id}`} className='link'>
-                                                {distrito.nombre}
+                                            <Link to={`/autoridades/oficinas/${oficina.id}`} className='link'>
+                                                {oficina.clave}
                                             </Link>
+                                        </TableCell>
+                                        <TableCell>
+                                            {oficina.descripcion}
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -53,7 +60,7 @@ const ListDistritos = () => {
             <Card>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Distritos
+                        Oficinas
                     </Typography>
                     <Progress />
                 </CardContent>
@@ -63,4 +70,4 @@ const ListDistritos = () => {
 
 }
 
-export default ListDistritos
+export default ListOficinas

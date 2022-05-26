@@ -1,10 +1,17 @@
 import React from 'react'
 
+import DetailOficina from './DetailOficina'
+import CommonScreen from '../ui/CommonScreen'
+
 
 const DetailOficinaScreen = () => {
+
     return (
-        <div>DetailOficinaScreen</div>
+        <CommonScreen>
+            <DetailOficina />
+        </CommonScreen>
     )
+
 }
 
 export default DetailOficinaScreen

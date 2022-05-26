@@ -1,7 +1,9 @@
 import React from 'react'
 
-import DetailDistrito from './DetailDistrito'
 import CommonScreen from '../ui/CommonScreen'
+
+import DetailDistrito from './DetailDistrito'
+import ListOficinas from '../oficinas/ListOficinas'
 
 
 const DetailDistritoScreen = () => {
@@ -9,6 +11,7 @@ const DetailDistritoScreen = () => {
     return (
         <CommonScreen>
             <DetailDistrito />
+            <ListOficinas distrito_id={1} />
         </CommonScreen>
     )
 
