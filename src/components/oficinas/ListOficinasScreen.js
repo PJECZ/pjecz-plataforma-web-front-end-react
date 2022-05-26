@@ -5,10 +5,10 @@ import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, Ta
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Autoridades } from '../../actions/AutoridadesActions'
+import { Oficinas } from '../../actions/OficinasActions'
 
 
-const AutoridadesScreen = () => {
+const ListOficinasScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,14 +19,14 @@ const AutoridadesScreen = () => {
         }
     })
 
-    // Consultar Autoridades
-    const [datos, setDatos] = useState([])
+    // Consultar Oficinas
+    const [oficinas, setOficinas] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Autoridades()
+            const response = await Oficinas()
             if (response.status === 200) {
-                setDatos(response.data.items)
+                setOficinas(response.data.items)
                 setConsultado(true)
             }
         }
@@ -34,10 +34,10 @@ const AutoridadesScreen = () => {
     }, [])
 
     if (consultado) {
-        return (
+        return(
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Autoridades
+                    Oficinas
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
@@ -49,14 +49,10 @@ const AutoridadesScreen = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {datos.map((autoridad, indice) =>
+                                {oficinas.map((oficina, indice) =>
                                     <TableRow key={indice}>
-                                        <TableCell>
-                                            {autoridad.clave}
-                                        </TableCell>
-                                        <TableCell>
-                                            {autoridad.descripcion}
-                                        </TableCell>
+                                        <TableCell>{oficina.clave}</TableCell>
+                                        <TableCell>{oficina.descripcion}</TableCell>
                                     </TableRow>
                                 )}
                             </TableBody>
@@ -66,7 +62,7 @@ const AutoridadesScreen = () => {
             </Container>
         )
     } else {
-        return (
+        return(
             <Container sx={commonSX.container}>
                 <Progress />
             </Container>
@@ -75,4 +71,4 @@ const AutoridadesScreen = () => {
 
 }
 
-export default AutoridadesScreen
+export default ListOficinasScreen

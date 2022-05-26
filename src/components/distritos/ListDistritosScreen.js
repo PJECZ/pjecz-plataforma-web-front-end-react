@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Modulos } from '../../actions/ModulosActions'
+import { Distritos } from '../../actions/DistritosActions'
 
 
-const ModulosScreen = () => {
+const ListDistritosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +19,12 @@ const ModulosScreen = () => {
         }
     })
 
-    // Consultar Modulos
+    // Consultar Distritos
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Modulos()
+            const response = await Distritos()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -33,20 +33,27 @@ const ModulosScreen = () => {
         fetchData()
     }, [])
 
+    // Ir al detalle de un Distrito
+    const detalleDistrito = (id) => {
+        navigate(`/distritos/${id}`)
+    }
+
     if (consultado) {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Modulos
+                    Distritos
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
-                                {datos.map((item, indice) =>
+                                {datos.map((distrito, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {item.nombre}
+                                            <Link to={`/autoridades/distritos/${distrito.id}`} className='link'>
+                                                {distrito.nombre}
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -66,4 +73,4 @@ const ModulosScreen = () => {
 
 }
 
-export default ModulosScreen
+export default ListDistritosScreen

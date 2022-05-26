@@ -9,7 +9,7 @@ import { Distrito } from '../../actions/DistritosActions'
 import { OficinasDelDistrito } from '../../actions/OficinasActions'
 
 
-const DistritoScreen = () => {
+const DetailDistritoScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -114,4 +114,4 @@ const DistritoScreen = () => {
 
 }
 
-export default DistritoScreen
+export default DetailDistritoScreen

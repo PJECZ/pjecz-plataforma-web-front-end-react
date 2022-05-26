@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Oficinas } from '../../actions/OficinasActions'
+import { Modulos } from '../../actions/ModulosActions'
 
 
-const OficinasScreen = () => {
+const ListModulosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,14 +19,14 @@ const OficinasScreen = () => {
         }
     })
 
-    // Consultar Oficinas
-    const [oficinas, setOficinas] = useState([])
+    // Consultar Modulos
+    const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Oficinas()
+            const response = await Modulos()
             if (response.status === 200) {
-                setOficinas(response.data.items)
+                setDatos(response.data.items)
                 setConsultado(true)
             }
         }
@@ -34,25 +34,20 @@ const OficinasScreen = () => {
     }, [])
 
     if (consultado) {
-        return(
+        return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Oficinas
+                    Modulos
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Clave</TableCell>
-                                    <TableCell>Descripcion</TableCell>
-                                </TableRow>
-                            </TableHead>
                             <TableBody>
-                                {oficinas.map((oficina, indice) =>
+                                {datos.map((item, indice) =>
                                     <TableRow key={indice}>
-                                        <TableCell>{oficina.clave}</TableCell>
-                                        <TableCell>{oficina.descripcion}</TableCell>
+                                        <TableCell>
+                                            {item.nombre}
+                                        </TableCell>
                                     </TableRow>
                                 )}
                             </TableBody>
@@ -62,7 +57,7 @@ const OficinasScreen = () => {
             </Container>
         )
     } else {
-        return(
+        return (
             <Container sx={commonSX.container}>
                 <Progress />
             </Container>
@@ -71,4 +66,4 @@ const OficinasScreen = () => {
 
 }
 
-export default OficinasScreen
+export default ListModulosScreen

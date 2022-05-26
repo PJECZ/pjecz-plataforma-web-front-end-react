@@ -5,10 +5,10 @@ import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, Ta
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Domicilios } from '../../actions/DomiciliosActions'
+import { Materias } from '../../actions/MateriasActions'
 
 
-const DomiciliosScreen = () => {
+const ListMateriasScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +19,12 @@ const DomiciliosScreen = () => {
         }
     })
 
-    // Consultar Domicilios
+    // Consultar Materias
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Domicilios()
+            const response = await Materias()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -37,16 +37,16 @@ const DomiciliosScreen = () => {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Domicilios
+                    Materias
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
-                                {datos.map((item, indice) =>
+                                {datos.map((materia, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {item.completo}
+                                            {materia.nombre}
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -66,4 +66,4 @@ const DomiciliosScreen = () => {
 
 }
 
-export default DomiciliosScreen
+export default ListMateriasScreen

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Distritos } from '../../actions/DistritosActions'
+import { Domicilios } from '../../actions/DomiciliosActions'
 
 
-const DistritosScreen = () => {
+const ListDomiciliosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +19,12 @@ const DistritosScreen = () => {
         }
     })
 
-    // Consultar Distritos
+    // Consultar Domicilios
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distritos()
+            const response = await Domicilios()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -33,27 +33,20 @@ const DistritosScreen = () => {
         fetchData()
     }, [])
 
-    // Ir al detalle de un Distrito
-    const detalleDistrito = (id) => {
-        navigate(`/distritos/${id}`)
-    }
-
     if (consultado) {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Distritos
+                    Domicilios
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
-                                {datos.map((distrito, indice) =>
+                                {datos.map((item, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            <Link to={`/autoridades/distritos/${distrito.id}`} className='link'>
-                                                {distrito.nombre}
-                                            </Link>
+                                            {item.completo}
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -73,4 +66,4 @@ const DistritosScreen = () => {
 
 }
 
-export default DistritosScreen
+export default ListDomiciliosScreen

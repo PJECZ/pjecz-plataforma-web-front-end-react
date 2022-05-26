@@ -7,7 +7,8 @@ import Progress from '../ui/Progress'
 
 import { Roles } from '../../actions/RolesActions'
 
-const RolesScreen = () => {
+
+const ListRolesScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -65,4 +66,4 @@ const RolesScreen = () => {
 
 }
 
-export default RolesScreen
+export default ListRolesScreen
