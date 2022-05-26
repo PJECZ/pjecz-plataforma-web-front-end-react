@@ -48,21 +48,19 @@ const App = () => {
                     <Route path='login' element={<LogInScreen />} />
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
-                    <Route path='autoridades'>
-                        <Route path='autoridades' element={<ListAutoridadesScreen />} />
-                        <Route path='distritos' element={<ListDistritosScreen />} />
-                        <Route path='distritos/:id' element={<DetailDistritoScreen />} />
-                        <Route path='materias' element={<ListMateriasScreen />} />
+                    <Route path='autoridades' element={<ListAutoridadesScreen />} />
+                    <Route path='domicilios' element={<ListDomiciliosScreen />} />
+                    <Route path='distritos'>
+                        <Route path='' element={<ListDistritosScreen />} />
+                        <Route path=':id' element={<DetailDistritoScreen />} />
                     </Route>
-                    <Route path='inventarios'>
-                        <Route path='domicilios' element={<ListDomiciliosScreen />} />
-                        <Route path='oficinas' element={<ListOficinasScreen />} />
-                        <Route path='oficinas/:id' element={<DetailOficinaScreen />} />
+                    <Route path='materias' element={<ListMateriasScreen />} />
+                    <Route path='modulos' element={<ListModulosScreen />} />
+                    <Route path='oficinas'>
+                        <Route path='' element={<ListOficinasScreen />} />
+                        <Route path=':id' element={<DetailOficinaScreen />} />
                     </Route>
-                    <Route path='usuarios'>
-                        <Route path='modulos' element={<ListModulosScreen />} />
-                        <Route path='roles' element={<ListRolesScreen />} />
-                    </Route>
+                    <Route path='roles' element={<ListRolesScreen />} />
                 </Route>
             </Routes>
         </BrowserRouter>

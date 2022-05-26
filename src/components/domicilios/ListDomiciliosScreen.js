@@ -39,7 +39,7 @@ const ListDomiciliosScreen = () => {
                 <Typography variant='h5' sx={commonSX.title}>
                     Domicilios
                 </Typography>
-                <Card variant='outlined'>
+                <Card>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>

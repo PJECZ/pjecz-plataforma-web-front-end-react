@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Card, CardContent, Paper, Table, TableBody, TableContainer, TableHead } from '@mui/material'
+import { Card, CardContent, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
@@ -25,7 +26,7 @@ const ListOficinas = () => {
 
     if (consultado) {
         return (
-            <Card>
+            <Card sx={commonSX.card} elevation={4}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
                         Oficinas
@@ -33,14 +34,16 @@ const ListOficinas = () => {
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableHead>
-                                <TableCell>Clave</TableCell>
-                                <TableCell>Descripcion</TableCell>
+                                <TableRow>
+                                    <TableCell>Clave</TableCell>
+                                    <TableCell>Descripcion</TableCell>
+                                </TableRow>
                             </TableHead>
                             <TableBody>
                                 {oficinas.map((oficina, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            <Link to={`/autoridades/oficinas/${oficina.id}`} className='link'>
+                                            <Link to={`/oficinas/${oficina.id}`} className='link'>
                                                 {oficina.clave}
                                             </Link>
                                         </TableCell>
@@ -57,7 +60,7 @@ const ListOficinas = () => {
         )
     } else {
         return (
-            <Card>
+            <Card sx={commonSX.card}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
                         Oficinas

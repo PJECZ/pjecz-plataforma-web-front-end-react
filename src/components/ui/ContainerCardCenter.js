@@ -11,7 +11,7 @@ const ContainerCardCenter = (props) => {
             <Grid container spacing={2}>
                 <Grid item md={3} xs={12}></Grid>
                 <Grid item md={6} xs={12}>
-                    <Card align='center' sx={commonSX.card}>
+                    <Card sx={commonSX.card} elevation={4} align='center'>
                         {props.children}
                     </Card>
                 </Grid>

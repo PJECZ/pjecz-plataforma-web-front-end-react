@@ -1,5 +1,6 @@
-import React from 'react'
-import { Card, CardContent, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Card, CardContent, Grid, TextField, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
@@ -30,7 +31,7 @@ const DetailDistrito = () => {
 
     if (consultado) {
         return (
-            <Card>
+            <Card sx={commonSX.card} elevation={4}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
                         Distrito
@@ -60,7 +61,7 @@ const DetailDistrito = () => {
         )
     } else {
         return (
-            <Card>
+            <Card sx={commonSX.card}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
                         Distrito

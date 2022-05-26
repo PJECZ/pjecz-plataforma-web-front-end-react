@@ -39,7 +39,7 @@ const ListModulosScreen = () => {
                 <Typography variant='h5' sx={commonSX.title}>
                     Modulos
                 </Typography>
-                <Card variant='outlined'>
+                <Card>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>

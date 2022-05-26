@@ -39,7 +39,7 @@ const ListAutoridadesScreen = () => {
                 <Typography variant='h5' sx={commonSX.title}>
                     Autoridades
                 </Typography>
-                <Card variant='outlined'>
+                <Card>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableHead>
