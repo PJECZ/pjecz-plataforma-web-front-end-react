@@ -13,6 +13,7 @@ import ListAutoridadesScreen from './autoridades/ListAutoridadesScreen'
 import DetailDistritoScreen from './distritos/DetailDistritoScreen'
 import ListDistritosScreen from './distritos/ListDistritosScreen'
 
+import DetailDomicilioScreen from './domicilios/DetailDomicilioScreen'
 import ListDomiciliosScreen from './domicilios/ListDomiciliosScreen'
 
 import ListMateriasScreen from './materias/ListMateriasScreen'
@@ -49,7 +50,10 @@ const App = () => {
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
                     <Route path='autoridades' element={<ListAutoridadesScreen />} />
-                    <Route path='domicilios' element={<ListDomiciliosScreen />} />
+                    <Route path='domicilios'>
+                        <Route path='' element={<ListDomiciliosScreen />} />
+                        <Route path=':id' element={<DetailDomicilioScreen />} />
+                    </Route>
                     <Route path='distritos'>
                         <Route path='' element={<ListDistritosScreen />} />
                         <Route path=':id' element={<DetailDistritoScreen />} />

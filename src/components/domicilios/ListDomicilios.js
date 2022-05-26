@@ -5,56 +5,52 @@ import { Link } from 'react-router-dom'
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Oficinas } from '../../actions/OficinasActions'
+import { Domicilios } from '../../actions/DomiciliosActions'
 
 
-const ListOficinas = (props) => {
+const ListDomicilios = () => {
 
-    // Consultar Oficinas
-    const [oficinas, setOficinas] = useState([])
+    // Consultar Domicilios
+    const [domicilios, setDomicilios] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Oficinas(props)
+            const response = await Domicilios()
             if (response.status === 200) {
-                setOficinas(response.data.items)
+                setDomicilios(response.data.items)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [props])
+    }, [])
 
     if (consultado) {
         return (
             <Card sx={commonSX.card} elevation={4}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Oficinas
+                        Domicilios
                     </Typography>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Clave</TableCell>
-                                    <TableCell>Descripcion</TableCell>
+                                    <TableCell>Completo</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {oficinas.map((oficina, indice) =>
+                                {domicilios.map((domicilio, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            <Link to={`/oficinas/${oficina.id}`} className='link'>
-                                                {oficina.clave}
+                                            <Link to={`/domicilios/${domicilio.id}`} className='link'>
+                                                {domicilio.completo}
                                             </Link>
-                                        </TableCell>
-                                        <TableCell>
-                                            {oficina.descripcion}
                                         </TableCell>
                                     </TableRow>
                                 )}
                             </TableBody>
                         </Table>
-                    </TableContainer>
+                        </TableContainer>
                 </CardContent>
             </Card>
         )
@@ -63,7 +59,7 @@ const ListOficinas = (props) => {
             <Card sx={commonSX.card}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Oficinas
+                        Domicilios
                     </Typography>
                     <Progress />
                 </CardContent>
@@ -73,4 +69,4 @@ const ListOficinas = (props) => {
 
 }
 
-export default ListOficinas
+export default ListDomicilios
