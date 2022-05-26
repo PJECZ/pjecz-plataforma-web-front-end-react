@@ -11,12 +11,15 @@ import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
 
-// catalogos
-import DistritosScreen from './catalogos/DistritosScreen'
-import MateriasScreen from './catalogos/MateriasScreen'
+// autoridades
+import AutoridadesScreen from './autoridades/AutoridadesScreen'
+import DistritosScreen from './autoridades/DistritosScreen'
+import DistritoScreen from './autoridades/DistritoScreen'
+import MateriasScreen from './autoridades/MateriasScreen'
 
 // inventarios
 import DomiciliosScreen from './inventarios/DomiciliosScreen'
+import OficinasScreen from './inventarios/OficinasScreen'
 
 // usuarios
 import ModulosScreen from './usuarios/ModulosScreen'
@@ -41,12 +44,15 @@ const App = () => {
                     <Route path='login' element={<LogInScreen />} />
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
-                    <Route path='catalogos'>
+                    <Route path='autoridades'>
+                        <Route path='autoridades' element={<AutoridadesScreen />} />
                         <Route path='distritos' element={<DistritosScreen />} />
+                        <Route path='distritos/:id' element={<DistritoScreen />} />
                         <Route path='materias' element={<MateriasScreen />} />
                     </Route>
                     <Route path='inventarios'>
                         <Route path='domicilios' element={<DomiciliosScreen />} />
+                        <Route path='oficinas' element={<OficinasScreen />} />
                     </Route>
                     <Route path='usuarios'>
                         <Route path='modulos' element={<ModulosScreen />} />
