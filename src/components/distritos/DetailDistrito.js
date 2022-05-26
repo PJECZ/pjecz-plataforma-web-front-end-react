@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { Card, CardContent, Grid, TextField, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
