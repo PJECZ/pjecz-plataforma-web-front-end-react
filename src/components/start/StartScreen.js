@@ -24,25 +24,25 @@ const StartScreen = () => {
             </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Autoridades' link='/autoridades/autoridades' />
+                    <ModuloCard title='Autoridades' link='/autoridades' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Distritos' link='/autoridades/distritos' />
+                    <ModuloCard title='Distritos' link='/distritos' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Domicilios' link='/inventarios/domicilios' />
+                    <ModuloCard title='Domicilios' link='/domicilios' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Materias' link='/autoridades/materias' />
+                    <ModuloCard title='Materias' link='/materias' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Modulos' link='/usuarios/modulos' />
+                    <ModuloCard title='Modulos' link='/modulos' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Oficinas' link='/inventarios/oficinas' />
+                    <ModuloCard title='Oficinas' link='/oficinas' />
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} lg={2}>
-                    <ModuloCard title='Roles' link='/usuarios/roles' />
+                    <ModuloCard title='Roles' link='/roles' />
                 </Grid>
             </Grid>
         </Container>

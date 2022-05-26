@@ -16,7 +16,7 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    // Redirigir al login cuando no haya iniciado sesion
+    // Redirigir al inicio si ya esta logueado
     const data = JSON.parse(window.localStorage.getItem('data'))
     const navigate = useNavigate()
     useEffect(() => {
@@ -25,7 +25,7 @@ const LogInScreen = () => {
         }
     })
 
-    // Formulario de login
+    // Formulario
     const [formData, setFormValues] = useState({
         username: '',
         password: '',
@@ -44,12 +44,13 @@ const LogInScreen = () => {
         })
     }
 
-    // Enviar el formulario de login
+    // Enviar el formulario
     const submitForm = () => {
         LogIn(formData).then((response) => {
             if (response.status === 200) {
                 const { data } = response
                 window.localStorage.setItem('data', JSON.stringify(data))
+                navigate('/')
             } else {
                 setIsError(true)
                 setErrorMessage(response.data.detail)

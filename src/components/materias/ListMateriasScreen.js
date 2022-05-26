@@ -39,7 +39,7 @@ const ListMateriasScreen = () => {
                 <Typography variant='h5' sx={commonSX.title}>
                     Materias
                 </Typography>
-                <Card variant='outlined'>
+                <Card>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>

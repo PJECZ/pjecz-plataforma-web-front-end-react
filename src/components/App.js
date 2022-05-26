@@ -7,15 +7,25 @@ import InstitutionalTheme from '../theme/InstitutionalTheme'
 import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
+
 import ListAutoridadesScreen from './autoridades/ListAutoridadesScreen'
+
 import DetailDistritoScreen from './distritos/DetailDistritoScreen'
 import ListDistritosScreen from './distritos/ListDistritosScreen'
+
 import ListDomiciliosScreen from './domicilios/ListDomiciliosScreen'
+
 import ListMateriasScreen from './materias/ListMateriasScreen'
+
 import ListModulosScreen from './modulos/ListModulosScreen'
+
+import DetailOficinaScreen from './oficinas/DetailOficinaScreen'
 import ListOficinasScreen from './oficinas/ListOficinasScreen'
+
 import ListRolesScreen from './roles/ListRolesScreen'
+
 import StartScreen from './start/StartScreen'
+
 import Navigation from './ui/Navigation'
 
 
@@ -38,20 +48,19 @@ const App = () => {
                     <Route path='login' element={<LogInScreen />} />
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
-                    <Route path='autoridades'>
-                        <Route path='autoridades' element={<ListAutoridadesScreen />} />
-                        <Route path='distritos' element={<ListDistritosScreen />} />
-                        <Route path='distritos/:id' element={<DetailDistritoScreen />} />
-                        <Route path='materias' element={<ListMateriasScreen />} />
+                    <Route path='autoridades' element={<ListAutoridadesScreen />} />
+                    <Route path='domicilios' element={<ListDomiciliosScreen />} />
+                    <Route path='distritos'>
+                        <Route path='' element={<ListDistritosScreen />} />
+                        <Route path=':id' element={<DetailDistritoScreen />} />
                     </Route>
-                    <Route path='inventarios'>
-                        <Route path='domicilios' element={<ListDomiciliosScreen />} />
-                        <Route path='oficinas' element={<ListOficinasScreen />} />
+                    <Route path='materias' element={<ListMateriasScreen />} />
+                    <Route path='modulos' element={<ListModulosScreen />} />
+                    <Route path='oficinas'>
+                        <Route path='' element={<ListOficinasScreen />} />
+                        <Route path=':id' element={<DetailOficinaScreen />} />
                     </Route>
-                    <Route path='usuarios'>
-                        <Route path='modulos' element={<ListModulosScreen />} />
-                        <Route path='roles' element={<ListRolesScreen />} />
-                    </Route>
+                    <Route path='roles' element={<ListRolesScreen />} />
                 </Route>
             </Routes>
         </BrowserRouter>

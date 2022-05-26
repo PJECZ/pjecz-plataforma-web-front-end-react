@@ -39,7 +39,7 @@ const ListRolesScreen = () => {
                 <Typography variant='h5' sx={commonSX.title}>
                     Roles
                 </Typography>
-                <Card variant='outlined'>
+                <Card>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
