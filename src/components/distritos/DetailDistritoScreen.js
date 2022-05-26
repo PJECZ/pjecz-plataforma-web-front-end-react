@@ -7,6 +7,8 @@ import Progress from '../ui/Progress'
 
 import { Distrito } from '../../actions/DistritosActions'
 
+import ListOficinasScreen from '../oficinas/ListOficinasScreen'
+
 
 const DetailDistritoScreen = () => {
 
@@ -78,6 +80,7 @@ const DetailDistritoScreen = () => {
                         />
                     </Grid>
                 </Grid>
+                <ListOficinasScreen distrito_id={distrito.id} />
             </Container>
         )
     } else {

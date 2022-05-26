@@ -10,6 +10,8 @@ import { Oficinas } from '../../actions/OficinasActions'
 
 const ListOficinasScreen = (props) => {
 
+    console.log(props.distrito_id)
+
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
     const navigate = useNavigate()
