@@ -3,25 +3,29 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 
 import InstitutionalTheme from '../theme/InstitutionalTheme'
-import Navigation from './ui/Navigation'
-import StartScreen from './start/StartScreen'
 
-// auth
+// components auth
 import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
 
-// autoridades
+// components autoridades
 import AutoridadesScreen from './autoridades/AutoridadesScreen'
 import DistritosScreen from './autoridades/DistritosScreen'
 import DistritoScreen from './autoridades/DistritoScreen'
 import MateriasScreen from './autoridades/MateriasScreen'
 
-// inventarios
+// components inventarios
 import DomiciliosScreen from './inventarios/DomiciliosScreen'
 import OficinasScreen from './inventarios/OficinasScreen'
 
-// usuarios
+// components start
+import StartScreen from './start/StartScreen'
+
+// components ui
+import Navigation from './ui/Navigation'
+
+// components usuarios
 import ModulosScreen from './usuarios/ModulosScreen'
 import RolesScreen from './usuarios/RolesScreen'
 
