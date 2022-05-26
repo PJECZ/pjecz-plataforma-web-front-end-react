@@ -8,21 +8,23 @@ import Progress from '../ui/Progress'
 import { Oficinas } from '../../actions/OficinasActions'
 
 
-const ListOficinas = () => {
+const ListOficinas = (props) => {
+
+    console.log(props)
 
     // Consultar Oficinas
     const [oficinas, setOficinas] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Oficinas()
+            const response = await Oficinas(props)
             if (response.status === 200) {
                 setOficinas(response.data.items)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [])
+    }, [props])
 
     if (consultado) {
         return (

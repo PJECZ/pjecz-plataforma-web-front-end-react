@@ -8,10 +8,9 @@ import Progress from '../ui/Progress'
 import { Distrito } from '../../actions/DistritosActions'
 
 
-const DetailDistrito = () => {
+const DetailDistrito = (props) => {
 
     // Consultar Distrito
-    const { id } = useParams()
     const [distrito, setDistrito] = useState({
         id: null,
         nombre: '',
@@ -20,14 +19,14 @@ const DetailDistrito = () => {
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distrito(id)
+            const response = await Distrito(props.distrito_id)
             if (response.status === 200) {
                 setDistrito(response.data)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [id])
+    }, [props])
 
     if (consultado) {
         return (

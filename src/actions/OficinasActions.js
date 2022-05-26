@@ -1,12 +1,16 @@
 import HttpCliente from '../services/HttpClientToken'
 
 
-export const Oficinas = () => {
+export const Oficinas = (filtros) => {
     return new Promise((resolve, reject) => {
         const data = JSON.parse(window.localStorage.getItem('data'))
         if (data) {
             const { access_token } = data
-            HttpCliente.get('/v1/oficinas', access_token)
+            let ruta = '/v1/oficinas'
+            if (filtros.distrito_id) {
+                ruta = ruta + `?distrito_id=${filtros.distrito_id}`
+            }
+            HttpCliente.get(ruta, access_token)
                 .then(response => {
                     resolve(response)
                 })
