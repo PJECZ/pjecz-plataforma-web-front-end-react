@@ -1,70 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import React from 'react'
 
-import commonSX from '../../theme/CommonSX'
-import Progress from '../ui/Progress'
-
-import { Distritos } from '../../actions/DistritosActions'
+import ListDistritos from './ListDistritos'
+import CommonScreen from '../ui/CommonScreen'
 
 
 const ListDistritosScreen = () => {
 
-    // Redirigir al login cuando no haya iniciado sesion
-    const data = JSON.parse(window.localStorage.getItem('data'))
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (!data) {
-            navigate('/login')
-        }
-    })
-
-    // Consultar Distritos
-    const [datos, setDatos] = useState([])
-    const [consultado, setConsultado] = useState(false)
-    useEffect(() => {
-        async function fetchData() {
-            const response = await Distritos()
-            if (response.status === 200) {
-                setDatos(response.data.items)
-                setConsultado(true)
-            }
-        }
-        fetchData()
-    }, [])
-
-    if (consultado) {
-        return (
-            <Container sx={commonSX.container}>
-                <Typography variant='h5' sx={commonSX.title}>
-                    Distritos
-                </Typography>
-                <Card variant='outlined'>
-                    <TableContainer componet={Paper}>
-                        <Table size="small">
-                            <TableBody>
-                                {datos.map((distrito, indice) =>
-                                    <TableRow key={indice}>
-                                        <TableCell>
-                                            <Link to={`/autoridades/distritos/${distrito.id}`} className='link'>
-                                                {distrito.nombre}
-                                            </Link>
-                                        </TableCell>
-                                    </TableRow>
-                                )}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </Card>
-            </Container>
-        )
-    } else {
-        return (
-            <Container sx={commonSX.container}>
-                <Progress />
-            </Container>
-        )
-    }
+    return (
+        <CommonScreen>
+            <ListDistritos />
+        </CommonScreen>
+    )
 
 }
 
