@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Oficinas } from '../../actions/OficinasActions'
+import { Distritos } from '../../actions/DistritosActions'
 
 
-const OficinasScreen = () => {
+const ListDistritosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,14 +19,14 @@ const OficinasScreen = () => {
         }
     })
 
-    // Consultar Oficinas
-    const [oficinas, setOficinas] = useState([])
+    // Consultar Distritos
+    const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Oficinas()
+            const response = await Distritos()
             if (response.status === 200) {
-                setOficinas(response.data.items)
+                setDatos(response.data.items)
                 setConsultado(true)
             }
         }
@@ -34,25 +34,22 @@ const OficinasScreen = () => {
     }, [])
 
     if (consultado) {
-        return(
+        return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Oficinas
+                    Distritos
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Clave</TableCell>
-                                    <TableCell>Descripcion</TableCell>
-                                </TableRow>
-                            </TableHead>
                             <TableBody>
-                                {oficinas.map((oficina, indice) =>
+                                {datos.map((distrito, indice) =>
                                     <TableRow key={indice}>
-                                        <TableCell>{oficina.clave}</TableCell>
-                                        <TableCell>{oficina.descripcion}</TableCell>
+                                        <TableCell>
+                                            <Link to={`/autoridades/distritos/${distrito.id}`} className='link'>
+                                                {distrito.nombre}
+                                            </Link>
+                                        </TableCell>
                                     </TableRow>
                                 )}
                             </TableBody>
@@ -62,7 +59,7 @@ const OficinasScreen = () => {
             </Container>
         )
     } else {
-        return(
+        return (
             <Container sx={commonSX.container}>
                 <Progress />
             </Container>
@@ -71,4 +68,4 @@ const OficinasScreen = () => {
 
 }
 
-export default OficinasScreen
+export default ListDistritosScreen

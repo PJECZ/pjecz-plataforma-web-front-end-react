@@ -3,27 +3,20 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 
 import InstitutionalTheme from '../theme/InstitutionalTheme'
-import Navigation from './ui/Navigation'
-import StartScreen from './start/StartScreen'
 
-// auth
 import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
-
-// autoridades
-import AutoridadesScreen from './autoridades/AutoridadesScreen'
-import DistritosScreen from './autoridades/DistritosScreen'
-import DistritoScreen from './autoridades/DistritoScreen'
-import MateriasScreen from './autoridades/MateriasScreen'
-
-// inventarios
-import DomiciliosScreen from './inventarios/DomiciliosScreen'
-import OficinasScreen from './inventarios/OficinasScreen'
-
-// usuarios
-import ModulosScreen from './usuarios/ModulosScreen'
-import RolesScreen from './usuarios/RolesScreen'
+import ListAutoridadesScreen from './autoridades/ListAutoridadesScreen'
+import DetailDistritoScreen from './distritos/DetailDistritoScreen'
+import ListDistritosScreen from './distritos/ListDistritosScreen'
+import ListDomiciliosScreen from './domicilios/ListDomiciliosScreen'
+import ListMateriasScreen from './materias/ListMateriasScreen'
+import ListModulosScreen from './modulos/ListModulosScreen'
+import ListOficinasScreen from './oficinas/ListOficinasScreen'
+import ListRolesScreen from './roles/ListRolesScreen'
+import StartScreen from './start/StartScreen'
+import Navigation from './ui/Navigation'
 
 
 const Layout = () => {
@@ -36,6 +29,7 @@ const Layout = () => {
 }
 
 const App = () => {
+
     return(
         <BrowserRouter>
             <Routes>
@@ -45,23 +39,24 @@ const App = () => {
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
                     <Route path='autoridades'>
-                        <Route path='autoridades' element={<AutoridadesScreen />} />
-                        <Route path='distritos' element={<DistritosScreen />} />
-                        <Route path='distritos/:id' element={<DistritoScreen />} />
-                        <Route path='materias' element={<MateriasScreen />} />
+                        <Route path='autoridades' element={<ListAutoridadesScreen />} />
+                        <Route path='distritos' element={<ListDistritosScreen />} />
+                        <Route path='distritos/:id' element={<DetailDistritoScreen />} />
+                        <Route path='materias' element={<ListMateriasScreen />} />
                     </Route>
                     <Route path='inventarios'>
-                        <Route path='domicilios' element={<DomiciliosScreen />} />
-                        <Route path='oficinas' element={<OficinasScreen />} />
+                        <Route path='domicilios' element={<ListDomiciliosScreen />} />
+                        <Route path='oficinas' element={<ListOficinasScreen />} />
                     </Route>
                     <Route path='usuarios'>
-                        <Route path='modulos' element={<ModulosScreen />} />
-                        <Route path='roles' element={<RolesScreen />} />
+                        <Route path='modulos' element={<ListModulosScreen />} />
+                        <Route path='roles' element={<ListRolesScreen />} />
                     </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
     )
+
 }
 
 export default App

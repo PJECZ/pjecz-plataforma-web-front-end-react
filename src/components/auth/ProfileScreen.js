@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Container, Grid, TextField, Typography } from '@mui/material'
+import { Container, Grid, TextField, Typography } from '@mui/material'
+
+import ContainerCardCenter from '../ui/ContainerCardCenter'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
 
@@ -121,19 +123,11 @@ const ProfileScreen = () => {
         )
     } else {
         return (
-            <Container sx={commonSX.container}>
-                <Grid container spacing={2}>
-                    <Grid item md={3} xs={12}></Grid>
-                    <Grid item md={6} xs={12}>
-                        <Card align='center' sx={commonSX.card}>
-                            <Typography variant='h5' sx={commonSX.title}>
-                                Esta fuera del sistema
-                            </Typography>
-                        </Card>
-                    </Grid>
-                    <Grid item md={3} xs={12}></Grid>
-                </Grid>
-            </Container>
+            <ContainerCardCenter>
+                <Typography variant='h5' sx={commonSX.title}>
+                    Esta fuera del sistema
+                </Typography>
+            </ContainerCardCenter>
         )
     }
 }

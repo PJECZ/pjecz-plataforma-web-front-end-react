@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Domicilios } from '../../actions/DomiciliosActions'
+import { Oficinas } from '../../actions/OficinasActions'
 
 
-const DomiciliosScreen = () => {
+const ListOficinasScreen = (props) => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,14 +19,14 @@ const DomiciliosScreen = () => {
         }
     })
 
-    // Consultar Domicilios
-    const [datos, setDatos] = useState([])
+    // Consultar Oficinas
+    const [oficinas, setOficinas] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Domicilios()
+            const response = await Oficinas()
             if (response.status === 200) {
-                setDatos(response.data.items)
+                setOficinas(response.data.items)
                 setConsultado(true)
             }
         }
@@ -34,20 +34,25 @@ const DomiciliosScreen = () => {
     }, [])
 
     if (consultado) {
-        return (
+        return(
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Domicilios
+                    Oficinas
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Clave</TableCell>
+                                    <TableCell>Descripcion</TableCell>
+                                </TableRow>
+                            </TableHead>
                             <TableBody>
-                                {datos.map((item, indice) =>
+                                {oficinas.map((oficina, indice) =>
                                     <TableRow key={indice}>
-                                        <TableCell>
-                                            {item.completo}
-                                        </TableCell>
+                                        <TableCell>{oficina.clave}</TableCell>
+                                        <TableCell>{oficina.descripcion}</TableCell>
                                     </TableRow>
                                 )}
                             </TableBody>
@@ -57,7 +62,7 @@ const DomiciliosScreen = () => {
             </Container>
         )
     } else {
-        return (
+        return(
             <Container sx={commonSX.container}>
                 <Progress />
             </Container>
@@ -66,4 +71,4 @@ const DomiciliosScreen = () => {
 
 }
 
-export default DomiciliosScreen
+export default ListOficinasScreen

@@ -5,10 +5,10 @@ import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, Ta
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Materias } from '../../actions/MateriasActions'
+import { Modulos } from '../../actions/ModulosActions'
 
 
-const MateriasScreen = () => {
+const ListModulosScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +19,12 @@ const MateriasScreen = () => {
         }
     })
 
-    // Consultar Materias
+    // Consultar Modulos
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Materias()
+            const response = await Modulos()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -37,16 +37,16 @@ const MateriasScreen = () => {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Materias
+                    Modulos
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
                             <TableBody>
-                                {datos.map((materia, indice) =>
+                                {datos.map((item, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {materia.nombre}
+                                            {item.nombre}
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -66,4 +66,4 @@ const MateriasScreen = () => {
 
 }
 
-export default MateriasScreen
+export default ListModulosScreen

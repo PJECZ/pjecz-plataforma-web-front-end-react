@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
+import { Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Autoridades } from '../../actions/AutoridadesActions'
+import { Roles } from '../../actions/RolesActions'
 
 
-const AutoridadesScreen = () => {
+const ListRolesScreen = () => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))
@@ -19,12 +19,12 @@ const AutoridadesScreen = () => {
         }
     })
 
-    // Consultar Autoridades
+    // Consultar Roles
     const [datos, setDatos] = useState([])
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Autoridades()
+            const response = await Roles()
             if (response.status === 200) {
                 setDatos(response.data.items)
                 setConsultado(true)
@@ -37,25 +37,16 @@ const AutoridadesScreen = () => {
         return (
             <Container sx={commonSX.container}>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Autoridades
+                    Roles
                 </Typography>
                 <Card variant='outlined'>
                     <TableContainer componet={Paper}>
                         <Table size="small">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Clave</TableCell>
-                                    <TableCell>Descripcion</TableCell>
-                                </TableRow>
-                            </TableHead>
                             <TableBody>
-                                {datos.map((autoridad, indice) =>
+                                {datos.map((item, indice) =>
                                     <TableRow key={indice}>
                                         <TableCell>
-                                            {autoridad.clave}
-                                        </TableCell>
-                                        <TableCell>
-                                            {autoridad.descripcion}
+                                            {item.nombre}
                                         </TableCell>
                                     </TableRow>
                                 )}
@@ -75,4 +66,4 @@ const AutoridadesScreen = () => {
 
 }
 
-export default AutoridadesScreen
+export default ListRolesScreen

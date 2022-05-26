@@ -7,7 +7,14 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 const ModuloCard = (props) => {
 
     const moduloCardStyles = {
-        paper: { height: 120, width: 180, margin: 4, display: 'flex', justifyContent: 'center', flexDirection: 'column' },
+        paper: {
+            height: 120,
+            width: 180,
+            margin: 4,
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column'
+        },
     }
 
     return (
