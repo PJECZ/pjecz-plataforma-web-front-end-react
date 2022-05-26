@@ -33,11 +33,6 @@ const ListDistritosScreen = () => {
         fetchData()
     }, [])
 
-    // Ir al detalle de un Distrito
-    const detalleDistrito = (id) => {
-        navigate(`/distritos/${id}`)
-    }
-
     if (consultado) {
         return (
             <Container sx={commonSX.container}>

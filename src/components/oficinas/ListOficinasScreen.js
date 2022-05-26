@@ -8,7 +8,7 @@ import Progress from '../ui/Progress'
 import { Oficinas } from '../../actions/OficinasActions'
 
 
-const ListOficinasScreen = () => {
+const ListOficinasScreen = (props) => {
 
     // Redirigir al login cuando no haya iniciado sesion
     const data = JSON.parse(window.localStorage.getItem('data'))

@@ -7,24 +7,15 @@ import InstitutionalTheme from '../theme/InstitutionalTheme'
 import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
-
 import ListAutoridadesScreen from './autoridades/ListAutoridadesScreen'
-
 import DetailDistritoScreen from './distritos/DetailDistritoScreen'
 import ListDistritosScreen from './distritos/ListDistritosScreen'
-
 import ListDomiciliosScreen from './domicilios/ListDomiciliosScreen'
-
-import ListMateriasScreen from './autoridades/ListMateriasScreen'
-
+import ListMateriasScreen from './materias/ListMateriasScreen'
 import ListModulosScreen from './modulos/ListModulosScreen'
-
 import ListOficinasScreen from './oficinas/ListOficinasScreen'
-
 import ListRolesScreen from './roles/ListRolesScreen'
-
 import StartScreen from './start/StartScreen'
-
 import Navigation from './ui/Navigation'
 
 
@@ -38,6 +29,7 @@ const Layout = () => {
 }
 
 const App = () => {
+
     return(
         <BrowserRouter>
             <Routes>
@@ -64,6 +56,7 @@ const App = () => {
             </Routes>
         </BrowserRouter>
     )
+
 }
 
 export default App
