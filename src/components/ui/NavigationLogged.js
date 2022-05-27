@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Box, Menu, MenuItem, Typography } from '@mui/material'
-import IconButton from '@mui/material/IconButton'
+import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person'
+
 import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 

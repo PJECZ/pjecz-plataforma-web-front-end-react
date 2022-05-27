@@ -36,8 +36,8 @@ const Navigation = () => {
     if (isLogged) {
         return (
             <AppBar position='absolute'>
-                <Container maxWidth="xl">
-                    <Toolbar disableGutters>
+                <Container>
+                    <Toolbar>
                         <AdbIcon sx={navigationSX.adbIconMobile} />
                         <Typography
                             variant="h6"
@@ -67,26 +67,14 @@ const Navigation = () => {
     } else {
         return(
             <AppBar position='absolute'>
-                <Container maxWidth="xl">
-                    <Toolbar disableGutters>
-                        <AdbIcon sx={navigationSX.adbIconMobile} />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={navigationSX.systemMobile}
-                        >
+                <Container>
+                    <Toolbar>
+                        <MenuIcon sx={navigationSX.threeLinesIconMobile} />
+                        <Typography variant='h6' noWrap component='a' href='/' sx={navigationSX.systemNameMobile}>
                             Plataforma Web
                         </Typography>
-                        <AdbIcon sx={navigationSX.adbIconDesktop} />
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href=""
-                            sx={navigationSX.systemDesktop}
-                        >
+                        <MenuIcon sx={navigationSX.threeLinesIconDesktop} />
+                        <Typography variant='h5' noWrap component='a' href='/' sx={navigationSX.systemNameDesktop}>
                             Plataforma Web
                         </Typography>
                         <NavigationPublic />
