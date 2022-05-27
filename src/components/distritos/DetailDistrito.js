@@ -7,7 +7,7 @@ import Progress from '../ui/Progress'
 import { Distrito } from '../../actions/DistritosActions'
 
 
-const DetailDistrito = (props) => {
+const DetailDistrito = ({ distrito_id }) => {
 
     // Consultar Distrito
     const [distrito, setDistrito] = useState({
@@ -18,14 +18,14 @@ const DetailDistrito = (props) => {
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Distrito(props.distrito_id)
+            const response = await Distrito(distrito_id)
             if (response.status === 200) {
                 setDistrito(response.data)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [props])
+    }, [distrito_id])
 
     if (consultado) {
         return (

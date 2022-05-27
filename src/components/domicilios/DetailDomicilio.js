@@ -6,6 +6,7 @@ import Progress from '../ui/Progress'
 
 import { Domicilio } from '../../actions/DomiciliosActions'
 
+
 const DetailDomicilio = ({ domicilio_id }) => {
 
     // Consultar Domicilio
@@ -30,7 +31,7 @@ const DetailDomicilio = ({ domicilio_id }) => {
             }
         }
         fetchData()
-    }, [props])
+    }, [domicilio_id])
 
     if (consultado) {
         return (

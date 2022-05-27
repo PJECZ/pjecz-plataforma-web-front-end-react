@@ -1,4 +1,4 @@
-const NavigationSX = {
+const navigationSX = {
     menuIconMobile: {
         display: { xs: 'flex', md: 'none' },
         mr: 1
@@ -40,4 +40,4 @@ const NavigationSX = {
     },
 }
 
-export default NavigationSX
+export default navigationSX

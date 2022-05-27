@@ -5,7 +5,7 @@ import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
 
-const NavigationMenu = () => {
+const NavigationMain = () => {
     return (
         <Box sx={navigationSX.pagesBoxDesktop}>
             <Button key='aplicaciones' sx={navigationSX.pagesButtonDesktop}>
@@ -32,4 +32,4 @@ const NavigationMenu = () => {
     )
 }
 
-export default NavigationMenu
+export default NavigationMain
