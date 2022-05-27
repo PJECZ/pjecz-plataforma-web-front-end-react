@@ -23,7 +23,7 @@ const LogOutScreen = () => {
     }, [isLogged])
 
     // Salir de la sesion
-    const logout = () => {
+    const logOut = () => {
         window.localStorage.removeItem('data')
         setIsLogged(false)
     }
@@ -38,7 +38,7 @@ const LogOutScreen = () => {
                     variant='contained'
                     fullWidth
                     type='button'
-                    onClick={logout}
+                    onClick={logOut}
                 >
                     Salir
                 </Button>
