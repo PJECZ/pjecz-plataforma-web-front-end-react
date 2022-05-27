@@ -8,6 +8,7 @@ import LogInScreen from './auth/LogInScreen'
 import LogOutScreen from './auth/LogOutScreen'
 import ProfileScreen from './auth/ProfileScreen'
 
+import DetailAutoridadScreen from './autoridades/DetailAutoridadScreen'
 import ListAutoridadesScreen from './autoridades/ListAutoridadesScreen'
 
 import DetailDistritoScreen from './distritos/DetailDistritoScreen'
@@ -49,7 +50,10 @@ const App = () => {
                     <Route path='login' element={<LogInScreen />} />
                     <Route path='profile' element={<ProfileScreen />} />
                     <Route path='logout' element={<LogOutScreen />} />
-                    <Route path='autoridades' element={<ListAutoridadesScreen />} />
+                    <Route path='autoridades'>
+                        <Route path='' element={<ListAutoridadesScreen />} />
+                        <Route path=':id' element={<DetailAutoridadScreen />} />
+                    </Route>
                     <Route path='domicilios'>
                         <Route path='' element={<ListDomiciliosScreen />} />
                         <Route path=':id' element={<DetailDomicilioScreen />} />
