@@ -4,57 +4,47 @@ import { Card, CardContent, Grid, TextField, Typography } from '@mui/material'
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Oficina } from '../../actions/OficinasActions'
+import { Materia } from '../../actions/MateriasActions'
 
 
-const DetailOficina = ({ oficina_id }) => {
+const DetailMateria = ({ materia_id }) => {
 
-    // Consultar Oficina
-    const [oficina, setOficina] = useState({
+    // Consultar Materia
+    const [materia, setMateria] = useState({
         id: null,
-        clave: '',
-        descripcion: '',
+        nombre: '',
     })
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Oficina(oficina_id)
+            const response = await Materia(materia_id)
             if (response.status === 200) {
-                setOficina(response.data)
+                setMateria(response.data)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [oficina_id])
+    }, [materia_id])
 
     if (consultado) {
         return (
             <Card sx={commonSX.card} elevation={4}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Oficina
+                        Materia
                     </Typography>
-                    <Grid container spacing={2}>
+                </CardContent>
+                <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <TextField
-                            label="Clave"
+                            label="Nombre"
                             type="text"
                             fullWidth
                             aria-readonly
-                            value={oficina.clave}
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            label="Descripcion"
-                            type="text"
-                            fullWidth
-                            aria-readonly
-                            value={oficina.descripcion}
+                            value={materia.nombre}
                         />
                     </Grid>
                 </Grid>
-                </CardContent>
             </Card>
         )
     } else {
@@ -62,7 +52,7 @@ const DetailOficina = ({ oficina_id }) => {
             <Card sx={commonSX.card}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Oficina
+                        Materia
                     </Typography>
                     <Progress />
                 </CardContent>
@@ -72,4 +62,4 @@ const DetailOficina = ({ oficina_id }) => {
 
 }
 
-export default DetailOficina
+export default DetailMateria

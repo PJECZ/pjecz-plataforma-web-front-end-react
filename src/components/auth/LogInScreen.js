@@ -32,8 +32,6 @@ const LogInScreen = () => {
     })
     const [isError, setIsError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-
-    // Observar los cambios en los campos del formulario
     const handleChange = (event) => {
         const { name, value } = event.target
         setFormValues((prevState) => {
@@ -74,7 +72,7 @@ const LogInScreen = () => {
         return (
             <ContainerCardCenter>
                 <Typography variant='h5' sx={commonSX.title}>
-                    Plataforma Web V3.0
+                    Ingresar a Plataforma Web
                 </Typography>
                 <form onSubmit={(e) => e.preventDefault()}>
                     <Grid container spacing={2}>

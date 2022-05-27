@@ -2,7 +2,6 @@ import HttpClientToken from '../services/HttpClientToken'
 import HttpClientUrlEncoded from '../services/HttpClientUrlEncoded'
 
 
-
 export const LogIn = (cliente) => {
     return new Promise((resolve, reject) => {
         const params = new URLSearchParams()

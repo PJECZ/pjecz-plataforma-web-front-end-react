@@ -6,7 +6,8 @@ import Progress from '../ui/Progress'
 
 import { Domicilio } from '../../actions/DomiciliosActions'
 
-const DetailDomicilio = (props) => {
+
+const DetailDomicilio = ({ domicilio_id }) => {
 
     // Consultar Domicilio
     const [domicilio, setDomicilio] = useState({
@@ -23,14 +24,14 @@ const DetailDomicilio = (props) => {
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Domicilio(props.domicilio_id)
+            const response = await Domicilio(domicilio_id)
             if (response.status === 200) {
                 setDomicilio(response.data)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [props])
+    }, [domicilio_id])
 
     if (consultado) {
         return (

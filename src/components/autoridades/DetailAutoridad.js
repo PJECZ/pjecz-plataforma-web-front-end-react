@@ -7,7 +7,7 @@ import Progress from '../ui/Progress'
 import { Autoridad } from '../../actions/AutoridadesActions'
 
 
-const DetailAutoridad = (props) => {
+const DetailAutoridad = ({ autoridad_id }) => {
 
     // Consultar Autoridad
     const [autoridad, setAutoridad] = useState({
@@ -18,14 +18,14 @@ const DetailAutoridad = (props) => {
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Autoridad(props.autoridad_id)
+            const response = await Autoridad(autoridad_id)
             if (response.status === 200) {
                 setAutoridad(response.data)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [props])
+    }, [autoridad_id])
 
     if (consultado) {
         return (
