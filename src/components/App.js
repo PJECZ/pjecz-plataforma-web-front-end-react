@@ -20,6 +20,7 @@ import ListDomiciliosScreen from './domicilios/ListDomiciliosScreen'
 import DetailMateriaScreen from './materias/DetailMateriaScreen'
 import ListMateriasScreen from './materias/ListMateriasScreen'
 
+import DetailModuloScreen from './modulos/DetailModuloScreen'
 import ListModulosScreen from './modulos/ListModulosScreen'
 
 import DetailOficinaScreen from './oficinas/DetailOficinaScreen'
@@ -67,7 +68,10 @@ const App = () => {
                         <Route path='' element={<ListMateriasScreen />} />
                         <Route path=':id' element={<DetailMateriaScreen />} />
                     </Route>
-                    <Route path='modulos' element={<ListModulosScreen />} />
+                    <Route path='modulos'>
+                        <Route path='' element={<ListModulosScreen />} />
+                        <Route path=':id' element={<DetailModuloScreen />} />
+                    </Route>
                     <Route path='oficinas'>
                         <Route path='' element={<ListOficinasScreen />} />
                         <Route path=':id' element={<DetailOficinaScreen />} />
