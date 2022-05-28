@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CommonScreen from '../ui/CommonScreen'
-import ListModulos from 'ListModulos'
+import ListModulos from './ListModulos'
 
 
 const ListModulosScreen = () => {
