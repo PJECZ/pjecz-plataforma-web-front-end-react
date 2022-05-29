@@ -3,9 +3,8 @@ import HttpCliente from '../services/HttpClientToken'
 
 export const Oficinas = (filtros) => {
     return new Promise((resolve, reject) => {
-        const data = JSON.parse(window.localStorage.getItem('data'))
-        if (data) {
-            const { access_token } = data
+        const token = window.localStorage.getItem('token')
+        if (token) {
             let ruta = '/v1/oficinas'
             if (filtros.distrito_id) {
                 ruta = ruta + `?distrito_id=${filtros.distrito_id}`
@@ -13,7 +12,7 @@ export const Oficinas = (filtros) => {
             if (filtros.domicilio_id) {
                 ruta = ruta + `?domicilio_id=${filtros.domicilio_id}`
             }
-            HttpCliente.get(ruta, access_token)
+            HttpCliente.get(ruta, token)
                 .then(response => {
                     resolve(response)
                 })
@@ -27,10 +26,9 @@ export const Oficinas = (filtros) => {
 
 export const Oficina = (id) => {
     return new Promise((resolve, reject) => {
-        const data = JSON.parse(window.localStorage.getItem('data'))
-        if (data) {
-            const { access_token } = data
-            HttpCliente.get(`/v1/oficinas/${id}`, access_token)
+        const token = window.localStorage.getItem('token')
+        if (token) {
+            HttpCliente.get(`/v1/oficinas/${id}`, token)
                 .then(response => {
                     resolve(response)
                 })

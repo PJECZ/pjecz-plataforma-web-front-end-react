@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppBar, Toolbar, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import MenuIcon from '@mui/icons-material/Menu'
+
+import UserContext from '../../context/user/UserContext'
 
 import NavigationAccess from './NavigationAccess'
 import NavigationMain from './NavigationMain'
@@ -11,27 +13,14 @@ import NavigationPublic from './NavigationPublic'
 import navigationSX from '../../theme/NavigationSX'
 import '../../css/global.css'
 
-import { Profile } from '../../actions/AuthActions'
-
 
 const Navigation = () => {
 
-    // Determinar si el usuario esta logueado
-    const [isLogged, setIsLogged] = useState(false)
-    const [username, setUsername] = useState('')
+    // Obtener el contexto de usuario
+    const { isLogged, username, getUser } = useContext(UserContext)
     useEffect(() => {
-        async function fetchData() {
-            const profile = await Profile()
-            if (profile.status === 200) {
-                setIsLogged(true)
-                setUsername(profile.data.email)
-            } else if (profile.status === 401) {
-                setIsLogged(false)
-                window.localStorage.removeItem('data')
-            }
-        }
-        fetchData()
-    }, [isLogged])
+        getUser()
+    }, [])
 
     return(
         <AppBar position='absolute'>

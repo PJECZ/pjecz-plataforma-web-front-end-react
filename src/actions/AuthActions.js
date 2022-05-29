@@ -20,10 +20,9 @@ export const LogIn = (cliente) => {
 
 export const Profile = () => {
     return new Promise((resolve, eject) => {
-        const data = JSON.parse(window.localStorage.getItem('data'))
-        if (data) {
-            const { access_token } = data
-            HttpClientToken.get(`/profile`, access_token)
+        const token = window.localStorage.getItem('token')
+        if (token) {
+            HttpClientToken.get(`/profile`, token)
                 .then(response => {
                     resolve(response)
                 })
