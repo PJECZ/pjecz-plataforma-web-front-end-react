@@ -1,31 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { Button, Typography } from '@mui/material'
+
+import UserContext from '../../context/user/UserContext'
 
 import ContainerCardCenter from '../ui/ContainerCardCenter'
 import commonSX from '../../theme/CommonSX'
 import '../../css/global.css'
+import { Link } from 'react-router-dom'
 
 
 const LogOutScreen = () => {
 
-    // Revisar si ya esta logueado
-    const [isLogged, setIsLogged] = useState(false)
-    function checkStorage() {
-        if (window.localStorage.getItem('data')) {
-            setIsLogged(true)
-        } else {
-            setIsLogged(false)
-        }
-    }
-    useEffect(() => {
-        checkStorage()
-        return () => {}
-    }, [isLogged])
+    // Obtener el contexto de usuario
+    const { isLogged, setLogOutUser } = useContext(UserContext)
 
     // Salir de la sesion
     const logOut = () => {
-        window.localStorage.removeItem('data')
-        setIsLogged(false)
+        window.localStorage.removeItem('token')
+        setLogOutUser()
     }
 
     if (isLogged) {
@@ -49,6 +41,11 @@ const LogOutScreen = () => {
             <ContainerCardCenter>
                 <Typography variant='h5' sx={commonSX.title}>
                     Esta fuera del sistema
+                </Typography>
+                <Typography variant='body1'>
+                    <Link to='/' className='link'>
+                        Volver al inicio
+                    </Link>
                 </Typography>
             </ContainerCardCenter>
         )

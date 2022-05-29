@@ -3,10 +3,9 @@ import HttpCliente from '../services/HttpClientToken'
 
 export const Modulos = () => {
     return new Promise((resolve, reject) => {
-        const data = JSON.parse(window.localStorage.getItem('data'))
-        if (data) {
-            const { access_token } = data
-            HttpCliente.get('/v1/modulos', access_token)
+        const token = window.localStorage.getItem('token')
+        if (token) {
+            HttpCliente.get('/v1/modulos', token)
                 .then(response => {
                     resolve(response)
                 })
@@ -20,10 +19,9 @@ export const Modulos = () => {
 
 export const Modulo = (id) => {
     return new Promise((resolve, reject) => {
-        const data = JSON.parse(window.localStorage.getItem('data'))
-        if (data) {
-            const { access_token } = data
-            HttpCliente.get(`/v1/modulos/${id}`, access_token)
+        const token = window.localStorage.getItem('token')
+        if (token) {
+            HttpCliente.get(`/v1/modulos/${id}`, token)
                 .then(response => {
                     resolve(response)
                 })

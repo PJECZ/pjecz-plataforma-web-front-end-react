@@ -1,26 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Container } from '@mui/material'
+
+import UserContext from '../../context/user/UserContext'
 
 import commonSX from '../../theme/CommonSX'
 
 
 const CommonScreen = (props) => {
 
-    // Redirigir al login cuando no haya iniciado sesion
-    const data = JSON.parse(window.localStorage.getItem('data'))
+    // Obtener el contexto de usuario
+    const { isLogged } = useContext(UserContext)
     const navigate = useNavigate()
     useEffect(() => {
-        if (!data) {
-            navigate('/login')
+        if (!isLogged) {
+            navigate('/login') // Redirigir al login cuando no haya iniciado sesion
         }
-    })
+    }, [])
 
-    return (
-        <Container sx={commonSX.container}>
-            {props.children}
-        </Container>
-    )
+    if (isLogged) {
+        return (
+            <Container sx={commonSX.container}>
+                {props.children}
+            </Container>
+        )
+    } else {
+        return null
+    }
 
 }
 

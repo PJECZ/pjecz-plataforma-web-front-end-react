@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
 import { Button, Card, Grid, TextField, Typography } from '@mui/material'
+
+import UserContext from '../../context/user/UserContext'
 
 import ContainerCardCenter from '../ui/ContainerCardCenter'
 import commonSX from '../../theme/CommonSX'
@@ -16,14 +17,8 @@ const cleanFormData = {
 
 const LogInScreen = () => {
 
-    // Redirigir al inicio si ya esta logueado
-    const data = JSON.parse(window.localStorage.getItem('data'))
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (data) {
-            navigate('/')
-        }
-    })
+    // Obtener el contexto de usuario
+    const { isLogged, username, getUser } = useContext(UserContext)
 
     // Formulario
     const [formData, setFormValues] = useState({
@@ -47,8 +42,8 @@ const LogInScreen = () => {
         LogIn(formData).then((response) => {
             if (response.status === 200) {
                 const { data } = response
-                window.localStorage.setItem('data', JSON.stringify(data))
-                navigate('/')
+                window.localStorage.setItem('token', data.access_token)
+                getUser()
             } else {
                 setIsError(true)
                 setErrorMessage(response.data.detail)
@@ -57,7 +52,15 @@ const LogInScreen = () => {
         setFormValues(cleanFormData)
     }
 
-    if (isError) {
+    if (isLogged) {
+        return (
+            <ContainerCardCenter>
+                <Typography variant='h5' sx={commonSX.title}>
+                    Bienvenido {username}
+                </Typography>
+            </ContainerCardCenter>
+        )
+    } else if (isError) {
         return (
             <ContainerCardCenter>
                 <Typography variant='h5' sx={commonSX.title}>

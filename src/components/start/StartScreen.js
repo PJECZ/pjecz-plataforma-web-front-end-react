@@ -1,24 +1,16 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Container, Grid, Typography } from '@mui/material'
+import React from 'react'
+import { Grid, Typography } from '@mui/material'
 
-import commonSX from '../../theme/CommonSX'
 import ModuloCard from './ModuloCard'
+
+import CommonScreen from '../ui/CommonScreen'
+import commonSX from '../../theme/CommonSX'
 
 
 const StartScreen = () => {
 
-    // Redirigir al login cuando no haya iniciado sesion
-    const data = JSON.parse(window.localStorage.getItem('data'))
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (!data) {
-            navigate('/login')
-        }
-    })
-
     return (
-        <Container sx={commonSX.container}>
+        <CommonScreen>
             <Typography variant='h5' sx={commonSX.title}>
                 Inicio
             </Typography>
@@ -45,7 +37,7 @@ const StartScreen = () => {
                     <ModuloCard title='Roles' link='/roles' />
                 </Grid>
             </Grid>
-        </Container>
+        </CommonScreen>
     )
 
 }

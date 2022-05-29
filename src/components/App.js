@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 
+import UserState from '../context/user/UserState'
+
 import InstitutionalTheme from '../theme/InstitutionalTheme'
 
 import LogInScreen from './auth/LogInScreen'
@@ -26,6 +28,7 @@ import ListModulosScreen from './modulos/ListModulosScreen'
 import DetailOficinaScreen from './oficinas/DetailOficinaScreen'
 import ListOficinasScreen from './oficinas/ListOficinasScreen'
 
+import DetailRolScreen from './roles/DetailRolScreen'
 import ListRolesScreen from './roles/ListRolesScreen'
 
 import StartScreen from './start/StartScreen'
@@ -36,8 +39,10 @@ import Navigation from './ui/Navigation'
 const Layout = () => {
     return(
         <ThemeProvider theme={InstitutionalTheme}>
-            <Navigation />
-            <Outlet />
+            <UserState>
+                <Navigation />
+                <Outlet />
+            </UserState>
         </ThemeProvider>
     )
 }
@@ -76,7 +81,10 @@ const App = () => {
                         <Route path='' element={<ListOficinasScreen />} />
                         <Route path=':id' element={<DetailOficinaScreen />} />
                     </Route>
-                    <Route path='roles' element={<ListRolesScreen />} />
+                    <Route path='roles'>
+                        <Route path='' element={<ListRolesScreen />} />
+                        <Route path=':id' element={<DetailRolScreen />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
