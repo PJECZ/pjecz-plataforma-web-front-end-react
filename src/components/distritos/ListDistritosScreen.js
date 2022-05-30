@@ -1,15 +1,15 @@
 import React from 'react'
 
 import ListDistritos from './ListDistritos'
-import CommonScreen from '../ui/CommonScreen'
+import ContainerLoggedScreen from '../ui/ContainerLoggedScreen'
 
 
 const ListDistritosScreen = () => {
 
     return (
-        <CommonScreen>
+        <ContainerLoggedScreen>
             <ListDistritos />
-        </CommonScreen>
+        </ContainerLoggedScreen>
     )
 
 }

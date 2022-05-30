@@ -7,7 +7,7 @@ import UserContext from '../../context/user/UserContext'
 import commonSX from '../../theme/CommonSX'
 
 
-const CommonScreen = (props) => {
+const ContainerLoggedScreen = (props) => {
 
     // Obtener el contexto de usuario
     const { isLogged } = useContext(UserContext)
@@ -30,4 +30,4 @@ const CommonScreen = (props) => {
 
 }
 
-export default CommonScreen
+export default ContainerLoggedScreen
