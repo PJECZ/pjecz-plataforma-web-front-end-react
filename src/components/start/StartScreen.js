@@ -3,14 +3,14 @@ import { Grid, Typography } from '@mui/material'
 
 import ModuloCard from './ModuloCard'
 
-import CommonScreen from '../ui/CommonScreen'
+import ContainerLoggedScreen from '../ui/ContainerLoggedScreen'
 import commonSX from '../../theme/CommonSX'
 
 
 const StartScreen = () => {
 
     return (
-        <CommonScreen>
+        <ContainerLoggedScreen>
             <Typography variant='h5' sx={commonSX.title}>
                 Inicio
             </Typography>
@@ -37,7 +37,7 @@ const StartScreen = () => {
                     <ModuloCard title='Roles' link='/roles' />
                 </Grid>
             </Grid>
-        </CommonScreen>
+        </ContainerLoggedScreen>
     )
 
 }

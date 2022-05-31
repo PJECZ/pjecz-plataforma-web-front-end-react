@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-import CommonScreen from '../ui/CommonScreen'
+import ContainerLoggedScreen from '../ui/ContainerLoggedScreen'
 
 import DetailMateria from './DetailMateria'
 
@@ -11,9 +11,9 @@ const DetailMateriaScreen = () => {
     const { id } = useParams()
 
     return (
-        <CommonScreen>
+        <ContainerLoggedScreen>
             <DetailMateria materia_id={id} />
-        </CommonScreen>
+        </ContainerLoggedScreen>
     )
 
 }

@@ -7,14 +7,16 @@ import UserContext from '../../context/user/UserContext'
 import commonSX from '../../theme/CommonSX'
 
 
-const CommonScreen = (props) => {
+const ContainerLoggedScreen = (props) => {
 
     // Obtener el contexto de usuario
     const { isLogged } = useContext(UserContext)
+
+    // Redirigir al login cuando NO haya iniciado sesion
     const navigate = useNavigate()
     useEffect(() => {
         if (!isLogged) {
-            navigate('/login') // Redirigir al login cuando no haya iniciado sesion
+            navigate('/login')
         }
     }, [])
 
@@ -30,4 +32,4 @@ const CommonScreen = (props) => {
 
 }
 
-export default CommonScreen
+export default ContainerLoggedScreen

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-import CommonScreen from '../ui/CommonScreen'
+import ContainerLoggedScreen from '../ui/ContainerLoggedScreen'
 
 import DetailRol from './DetailRol'
 
@@ -11,9 +11,9 @@ const DetailRolScreen = () => {
     const { id } = useParams()
 
     return (
-        <CommonScreen>
+        <ContainerLoggedScreen>
             <DetailRol rol_id={id} />
-        </CommonScreen>
+        </ContainerLoggedScreen>
     )
 
 }

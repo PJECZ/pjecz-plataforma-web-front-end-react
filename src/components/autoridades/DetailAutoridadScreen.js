@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-import CommonScreen from '../ui/CommonScreen'
+import ContainerLoggedScreen from '../ui/ContainerLoggedScreen'
 
 import DetailAutoridad from './DetailAutoridad'
 
@@ -11,9 +11,9 @@ const DetailAutoridadScreen = () => {
     const { id } = useParams()
 
     return (
-        <CommonScreen>
+        <ContainerLoggedScreen>
             <DetailAutoridad autoridad_id={id} />
-        </CommonScreen>
+        </ContainerLoggedScreen>
     )
 }
 

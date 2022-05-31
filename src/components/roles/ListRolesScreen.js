@@ -1,15 +1,15 @@
 import React from 'react'
 
-import CommonScreen from '../ui/CommonScreen'
+import ContainerLoggedScreen from '../ui/ContainerLoggedScreen'
 import ListRoles from './ListRoles'
 
 
 const ListRolesScreen = () => {
 
     return (
-        <CommonScreen>
+        <ContainerLoggedScreen>
             <ListRoles />
-        </CommonScreen>
+        </ContainerLoggedScreen>
     )
 
 }
