@@ -11,10 +11,12 @@ const ContainerLoggedScreen = (props) => {
 
     // Obtener el contexto de usuario
     const { isLogged } = useContext(UserContext)
+
+    // Redirigir al login cuando NO haya iniciado sesion
     const navigate = useNavigate()
     useEffect(() => {
         if (!isLogged) {
-            navigate('/login') // Redirigir al login cuando no haya iniciado sesion
+            navigate('/login')
         }
     }, [])
 
