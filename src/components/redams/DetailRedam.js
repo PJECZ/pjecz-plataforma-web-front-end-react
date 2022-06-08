@@ -4,13 +4,13 @@ import { Card, CardContent, Grid, TextField, Typography } from '@mui/material'
 import commonSX from '../../theme/CommonSX'
 import Progress from '../ui/Progress'
 
-import { Oficina } from '../../actions/OficinasActions'
+import { Redam } from '../../actions/RedamsActions'
 
 
-const DetailOficina = ({ oficina_id }) => {
+const DetailRedam = ({ redam_id }) => {
 
-    // Consultar Oficina
-    const [oficina, setOficina] = useState({
+    // Consultar Redam
+    const [redam, setRedam] = useState({
         id: null,
         clave: '',
         descripcion: '',
@@ -18,39 +18,39 @@ const DetailOficina = ({ oficina_id }) => {
     const [consultado, setConsultado] = useState(false)
     useEffect(() => {
         async function fetchData() {
-            const response = await Oficina(oficina_id)
+            const response = await Redam(redam_id)
             if (response.status === 200) {
-                setOficina(response.data)
+                setRedam(response.data)
                 setConsultado(true)
             }
         }
         fetchData()
-    }, [oficina_id])
+    }, [redam_id])
 
     if (consultado) {
         return (
             <Card sx={commonSX.card} elevation={4}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Oficina
+                        REDAM Deudor Alimentario
                     </Typography>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <TextField
-                                label="Clave"
+                                label="ID"
                                 type="text"
                                 fullWidth
                                 aria-readonly
-                                value={oficina.clave}
+                                value={redam.id}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                label="Descripcion"
+                                label="Nombre"
                                 type="text"
                                 fullWidth
                                 aria-readonly
-                                value={oficina.descripcion}
+                                value={redam.nombre}
                             />
                         </Grid>
                     </Grid>
@@ -62,14 +62,13 @@ const DetailOficina = ({ oficina_id }) => {
             <Card sx={commonSX.card}>
                 <CardContent>
                     <Typography variant='h5' sx={commonSX.title}>
-                        Oficina
+                        REDAM Deudor Alimentario
                     </Typography>
                     <Progress />
                 </CardContent>
             </Card>
         )
     }
-
 }
 
-export default DetailOficina
+export default DetailRedam
