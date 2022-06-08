@@ -84,7 +84,7 @@ const App = () => {
                         <Route path='' element={<ListOficinasScreen />} />
                         <Route path=':id' element={<DetailOficinaScreen />} />
                     </Route>
-                    <Route path='redam'>
+                    <Route path='redams'>
                         <Route path='' element={<ListRedamsScreen />} />
                         <Route path=':id' element={<DetailRedamScreen />} />
                     </Route>
