@@ -28,6 +28,9 @@ import ListModulosScreen from './modulos/ListModulosScreen'
 import DetailOficinaScreen from './oficinas/DetailOficinaScreen'
 import ListOficinasScreen from './oficinas/ListOficinasScreen'
 
+import DetailRedamScreen from './redams/DetailRedamScreen'
+import ListRedamsScreen from './redams/ListRedamsScreen'
+
 import DetailRolScreen from './roles/DetailRolScreen'
 import ListRolesScreen from './roles/ListRolesScreen'
 
@@ -80,6 +83,10 @@ const App = () => {
                     <Route path='oficinas'>
                         <Route path='' element={<ListOficinasScreen />} />
                         <Route path=':id' element={<DetailOficinaScreen />} />
+                    </Route>
+                    <Route path='redam'>
+                        <Route path='' element={<ListRedamsScreen />} />
+                        <Route path=':id' element={<DetailRedamScreen />} />
                     </Route>
                     <Route path='roles'>
                         <Route path='' element={<ListRolesScreen />} />
