@@ -35,25 +35,25 @@ const DetailOficina = ({ oficina_id }) => {
                         Oficina
                     </Typography>
                     <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <TextField
-                            label="Clave"
-                            type="text"
-                            fullWidth
-                            aria-readonly
-                            value={oficina.clave}
-                        />
+                        <Grid item xs={12}>
+                            <TextField
+                                label="Clave"
+                                type="text"
+                                fullWidth
+                                aria-readonly
+                                value={oficina.clave}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                label="Descripcion"
+                                type="text"
+                                fullWidth
+                                aria-readonly
+                                value={oficina.descripcion}
+                            />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            label="Descripcion"
-                            type="text"
-                            fullWidth
-                            aria-readonly
-                            value={oficina.descripcion}
-                        />
-                    </Grid>
-                </Grid>
                 </CardContent>
             </Card>
         )
